@@ -10,8 +10,8 @@ class Config(dict):
 
 config = Config({
     'rom_file': 'rom.vmem',
-    'id': 'tt-ihp-2408',
-    'remote': 'FAKEDATA',
+    'id': 'ttihp0p1',
+    'remote': 'TinyTapeout/tinytapeout-ihp-0p1',
     'hash': 'deadbeef',
 })
 
@@ -19,7 +19,7 @@ import binascii
 import os
 from urllib.parse import urlparse
 
-from git.repo import Repo
+#from git.repo import Repo
 
 #from config import Config
 
@@ -78,7 +78,7 @@ class ROMFile:
 
         rom_text = f"shuttle={self.config['id']}\n"
         rom_text += f"repo={self.get_git_remote()}\n"
-        rom_text += f"commit={short_sha}\n"
+        #rom_text += f"commit={short_sha}\n"
 
         print(f"\nROM text: {len(rom_text)} bytes (max={MAX_ROM_TEXT_SIZE})\n")
         print("  " + "\n  ".join(rom_text.split("\n")))
@@ -87,7 +87,7 @@ class ROMFile:
 
         shuttle_id = self.config["id"][:8]
         rom[0 : len(shuttle_id)] = map(segment_char, shuttle_id)
-        rom[8:16] = map(segment_char, short_sha.upper())
+        #rom[8:16] = map(segment_char, short_sha.upper())
         rom[32 : 32 + len(rom_text)] = rom_text.encode("ascii")
         rom[248:252] = b"TT\xFA\xBB"
         rom[252:256] = binascii.crc32(rom[0:252]).to_bytes(4, "little")
