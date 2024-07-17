@@ -1,0 +1,53 @@
+# Tiny Tapeout project information
+project:
+  title:        "TinyTapeout Factory Test"      # Project title
+  author:       "Tiny Tapeout"             # Your name
+  discord:      ""                         # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Factory test module"      # One line description of what your project does
+  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     0         # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_factory_test"
+  
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:        
+    - "tt_um_factory_test.v"
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+pinout:
+  # Inputs
+  ui[0]: "sel / in_a[0]"
+  ui[1]: "in_a[1]"
+  ui[2]: "in_a[2]"
+  ui[3]: "in_a[3]"
+  ui[4]: "in_a[4]"
+  ui[5]: "in_a[5]"
+  ui[6]: "in_a[6]"
+  ui[7]: "in_a[7]"
+
+  # Outputs
+  uo[0]: "output[0] / counter[0]"
+  uo[1]: "output[1] / counter[1]"
+  uo[2]: "output[2] / counter[2]"
+  uo[3]: "output[3] / counter[3]"
+  uo[4]: "output[4] / counter[4]"
+  uo[5]: "output[5] / counter[5]"
+  uo[6]: "output[6] / counter[6]"
+  uo[7]: "output[7] / counter[7]"
+
+  # Bidirectional pins
+  uio[0]: "in_b[0] / counter[0]"
+  uio[1]: "in_b[1] / counter[1]"
+  uio[2]: "in_b[2] / counter[2]"
+  uio[3]: "in_b[3] / counter[3]"
+  uio[4]: "in_b[4] / counter[4]"
+  uio[5]: "in_b[5] / counter[5]"
+  uio[6]: "in_b[6] / counter[6]"
+  uio[7]: "in_b[7] / counter[7]"
+
+# Do not change!
+yaml_version: 6

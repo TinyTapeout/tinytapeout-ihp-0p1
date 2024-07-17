@@ -1,0 +1,58 @@
+# Tiny Tapeout project information
+project:
+  title:        "VGA clock"      # Project title
+  author:       "Matt Venn"      # Your name
+  discord:      "mattvenn"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Shows the time on a VGA screen"      # One line description of what your project does
+  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  clock_hz:     31500000       # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_vga_clock"
+  
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:        
+    - button_pulse.v
+    - digit.v
+    - fontROM.v
+    - tt_vga_clock.v
+    - vga_clock.v
+    - VgaSyncGen.v
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+pinout:
+  # Inputs
+  ui[0]: "adjust hours"
+  ui[1]: "adjust minutes"
+  ui[2]: "adjust seconds"
+  ui[3]: "PMOD type select"
+  ui[4]: ""
+  ui[5]: ""
+  ui[6]: ""
+  ui[7]: ""
+
+  # Outputs
+  uo[0]: "hsync / R1"
+  uo[1]: "vsync / G1"
+  uo[2]: "B0 / B1"
+  uo[3]: "B1 / VS"
+  uo[4]: "G0 / R0"
+  uo[5]: "G1 / G0"
+  uo[6]: "R0 / B0"
+  uo[7]: "R1 / HS"
+
+  # Bidirectional pins
+  uio[0]: ""
+  uio[1]: ""
+  uio[2]: ""
+  uio[3]: ""
+  uio[4]: ""
+  uio[5]: ""
+  uio[6]: ""
+  uio[7]: ""
+
+# Do not change!
+yaml_version: 6

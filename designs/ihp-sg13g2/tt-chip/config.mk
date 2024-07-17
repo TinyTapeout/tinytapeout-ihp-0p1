@@ -9,16 +9,16 @@ export VERILOG_FILES = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_top.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p01_wrapper.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p02_wrapper.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p03_wrapper.v \
-                       $(PROJECTS_HOME)/tt_um_chip_rom/tt_um_chip_rom.v \
-                       $(PROJECTS_HOME)/tt_um_factory_test/tt_um_factory_test.v \
-                       $(PROJECTS_HOME)/tt_um_urish_simon/simon.v \
-                       $(PROJECTS_HOME)/tt_um_urish_simon/project.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/button_pulse.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/digit.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/fontROM.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/tt_vga_clock.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/vga_clock.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/VgaSyncGen.v
+                       $(PROJECTS_HOME)/tt_um_chip_rom/src/tt_um_chip_rom.v \
+                       $(PROJECTS_HOME)/tt_um_factory_test/src/tt_um_factory_test.v \
+                       $(PROJECTS_HOME)/tt_um_urish_simon/src/simon.v \
+                       $(PROJECTS_HOME)/tt_um_urish_simon/src/project.v \
+                       $(PROJECTS_HOME)/tt_um_vga_clock/src/button_pulse.v \
+                       $(PROJECTS_HOME)/tt_um_vga_clock/src/digit.v \
+                       $(PROJECTS_HOME)/tt_um_vga_clock/src/fontROM.v \
+                       $(PROJECTS_HOME)/tt_um_vga_clock/src/tt_vga_clock.v \
+                       $(PROJECTS_HOME)/tt_um_vga_clock/src/vga_clock.v \
+                       $(PROJECTS_HOME)/tt_um_vga_clock/src/VgaSyncGen.v
 
 export SDC_FILE      = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
 
