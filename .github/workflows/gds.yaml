@@ -60,3 +60,33 @@ jobs:
             objects
             reports
             results
+  
+  drc:
+    needs: gds
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Download GDS
+        uses: actions/download-artifact@v4
+        with:
+          name: gds
+
+      - name: Install KLayout
+        run: |
+          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
+          sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
+      
+      - name: Run DRC
+        run: |
+          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2.lydrc -rd cell=tt_top ./results/ihp-sg13g2/tt-chip/base/6_final.gds
+
+      - name: Upload DRC results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: drc-results
+          path: sg13g2_tt_top.lyrdb
