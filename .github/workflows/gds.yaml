@@ -60,7 +60,41 @@ jobs:
             objects
             reports
             results
-  
+
+  gl-verification:
+    needs: gds
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Download GDS
+        uses: actions/download-artifact@v4
+        with:
+          name: gds
+
+      # Install iverilog, cocotb
+      - name: install oss-cad-suite
+        uses: YosysHQ/setup-oss-cad-suite@v3
+        with:
+          version: '2024-07-16'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: GL verification
+        working-directory: test
+        run: |
+          make clean test_mux_gl
+          # make will return success even if the test fails, so check for failure in the results.xml
+          ! grep failure results.xml
+
+      - name: Publish VCD
+        uses: actions/upload-artifact@v4
+        with:
+          name: vcd
+          path: test/test_mux.vcd
+
   drc:
     needs: gds
     runs-on: ubuntu-22.04
@@ -79,7 +113,7 @@ jobs:
         run: |
           wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
           sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
-      
+
       - name: Run DRC
         run: |
           klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2.lydrc -rd cell=tt_top ./results/ihp-sg13g2/tt-chip/base/6_final.gds
