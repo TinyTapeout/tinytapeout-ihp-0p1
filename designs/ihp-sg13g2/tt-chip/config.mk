@@ -3,6 +3,8 @@ export DESIGN_NAME = tt_top
 export PLATFORM    = ihp-sg13g2
 export PROJECTS_HOME = $(DESIGN_HOME)/../projects
 
+export SEAL_GDS = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/gds/sealring.gds
+
 export VERILOG_FILES = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_top.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/basic_mux.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p00_wrapper.v \
