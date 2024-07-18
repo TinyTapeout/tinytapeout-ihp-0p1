@@ -1,3 +1,4 @@
+[![verification](../../actions/workflows/verification.yaml/badge.svg)](../../actions/workflows/verification.yaml)
 [![gds](../../actions/workflows/gds.yaml/badge.svg)](../../actions/workflows/gds.yaml)
 
 # Tiny Tapeout IHP 0p1
