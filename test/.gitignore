@@ -1,0 +1,5 @@
+sim_build
+sim_build_gates
+*.pyc
+*.vcd
+results.xml

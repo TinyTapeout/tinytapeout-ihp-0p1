@@ -24,6 +24,8 @@ module basic_mux (
       .ow (p01_ow)
   );
 
+`ifndef RTL_TESTBENCH
+
   wire p02_selected = (addr == 5'd02);
   wire [17:0] p02_iw = p02_selected ? iw : 18'b0;
   wire [23:0] p02_ow;
@@ -42,12 +44,16 @@ module basic_mux (
       .ow (p03_ow)
   );
 
+`endif // RTL_TESTBENCH
+
   always_comb begin
     case (addr)
       5'd00:   ow = p00_ow;
       5'd01:   ow = p01_ow;
+`ifndef RTL_TESTBENCH
       5'd02:   ow = p02_ow;
       5'd03:   ow = p03_ow;
+`endif // RTL_TESTBENCH
       default: ow = 24'b0;
     endcase
   end

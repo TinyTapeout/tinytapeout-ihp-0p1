@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Thu Jul 18 06:38:24 2024
+[*]
+[dumpfile] "/home/uri/p/tinytapeout-ihp-0p1/test/test_mux.vcd"
+[dumpfile_mtime] "Thu Jul 18 06:38:00 2024"
+[dumpfile_size] 8574674
+[savefile] "/home/uri/p/tinytapeout-ihp-0p1/test/test_mux.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-24.036236 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 214
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@22
+tt_top_tb.addr[4:0]
+@28
+tt_top_tb.clk
+tt_top_tb.rst_n
+@22
+tt_top_tb.ui_in[7:0]
+tt_top_tb.uo_out[7:0]
+@23
+tt_top_tb.uio[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

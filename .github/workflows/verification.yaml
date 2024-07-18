@@ -1,0 +1,39 @@
+name: verification
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  verification:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+      - run: pip install -r test/requirements.txt
+
+      - name: Install iverilog
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+
+      - name: Mux verification
+        working-directory: test
+        run: |
+          make clean test_mux
+          # make will return success even if the test fails, so check for failure in the results.xml
+          ! grep failure results.xml
+
+      - name: Publish VCD
+        uses: actions/upload-artifact@v4
+        with:
+          name: vcd
+          path: test/test_mux.vcd
