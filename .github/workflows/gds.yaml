@@ -124,3 +124,13 @@ jobs:
         with:
           name: drc-results
           path: sg13g2_tt_top.lyrdb
+
+      - name: install xmllint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils
+
+      - name: DRC summary
+        if: always()
+        run: |
+          scripts/drc-summary.sh sg13g2_tt_top.lyrdb >> $GITHUB_STEP_SUMMARY
