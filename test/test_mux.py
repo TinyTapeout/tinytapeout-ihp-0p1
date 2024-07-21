@@ -1,7 +1,7 @@
 import cocotb
 from cocotb.types import LogicArray
 from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles
+from cocotb.triggers import ClockCycles, Timer
 import re
 import os
 import binascii
@@ -9,7 +9,19 @@ import binascii
 
 async def enable_design(dut, mux_addr):
     dut._log.info(f"enabling design at mux address {mux_addr}")
-    dut.addr.value = mux_addr
+    dut.ctrl_ena.value = 0
+    dut.ctrl_sel_rst_n.value = 0
+    dut.ctrl_sel_inc.value = 0
+    await Timer(100, units="ns")
+    dut.ctrl_sel_rst_n.value = 1
+    await Timer(100, units="ns")
+    for i in range(mux_addr):
+        dut.ctrl_sel_inc.value = 1
+        await Timer(100, units="ns")
+        dut.ctrl_sel_inc.value = 0
+        await Timer(100, units="ns")
+    dut.ctrl_ena.value = 1
+    await Timer(100, units="ns")
 
 
 @cocotb.test()
@@ -93,3 +105,12 @@ async def test_rom(dut):
 
     crc32 = int.from_bytes(buf[252:256], "little")
     assert crc32 == binascii.crc32(buf[0:252])
+
+@cocotb.test()
+async def test_loopback(dut):
+    for c in "loopback test":
+        for i in range(8):
+            bit = (ord(c) >> i) & 1
+            dut.loopback_in.value = bit
+            await Timer(100, units="ns")
+            assert dut.loopback_out.value == bit

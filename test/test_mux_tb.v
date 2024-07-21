@@ -9,7 +9,13 @@ module tt_top_tb (
     inout wire [7:0] uio,
 
     // control interface
-    input wire [4:0] addr
+    input wire ctrl_sel_rst_n,
+    input wire ctrl_sel_inc,
+    input wire ctrl_ena,
+
+    // loopback interface
+    input wire loopback_in,
+    output wire loopback_out
 );
 
 `ifdef SIM_ICARUS
@@ -26,13 +32,20 @@ module tt_top_tb (
   end
 `endif
 
+  wire _unused;
+
   tt_top tt (
-      .addr_PAD(addr),
+      .ctrl_sel_rst_n_PAD(ctrl_sel_rst_n),
+      .ctrl_sel_inc_PAD(ctrl_sel_inc),
+      .ctrl_ena_PAD(ctrl_ena),
       .ui_in_PAD(ui_in),
       .uo_out_PAD(uo_out),
       .uio_PAD(uio),
       .clk_PAD(clk),
-      .rst_n_PAD(rst_n)
+      .rst_n_PAD(rst_n),
+      .loopback_in_PAD(loopback_in),
+      .loopback_out_PAD(loopback_out),
+      .unused_PAD(_unused)
   );
 
 endmodule

@@ -5,7 +5,7 @@ set IO_WIDTH 80
 set BONDPAD_SIZE 70
 set SEALRING_OFFSET 70
 set MAX_NUM_PADS_HORIZONTAL 12
-set MAX_NUM_PADS_VERTICAL 11
+set MAX_NUM_PADS_VERTICAL 12
 
 proc calc_horizontal_pad_location {index} {
     global IO_LENGTH
@@ -49,57 +49,57 @@ make_io_sites \
     -offset $IO_OFFSET
 
 # Place Pads
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  0] {sg13g2_IOPadIOVdd_1} -master sg13g2_IOPadIOVdd
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  1] {sg13g2_IOPadIOVss_1} -master sg13g2_IOPadIOVss
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  2] {sg13g2_IOPadVss_1} -master sg13g2_IOPadVss
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  3] {sg13g2_IOPadVdd_1} -master sg13g2_IOPadVdd
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  4] {sg13g2_ui_in_0}
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  5] {sg13g2_ui_in_1}
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  6] {sg13g2_ui_in_2}
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  7] {sg13g2_ui_in_3}
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  8] {sg13g2_ui_in_4}
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  9] {sg13g2_ui_in_5}
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location 10] {sg13g2_ui_in_6}
-place_pad -row IO_SOUTH -location [calc_horizontal_pad_location 11] {sg13g2_ui_in_7}
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  0] {sg13g2_unused}
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  1] {sg13g2_IOPadIOVss_3} -master sg13g2_IOPadIOVss
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  2] {sg13g2_ctrl_ena}
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  3] {sg13g2_IOPadVss_1} -master sg13g2_IOPadVss
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  4] {sg13g2_ctrl_sel_inc}
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  5] {sg13g2_ctrl_sel_rst_n}
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  6] {sg13g2_IOPadIOVss_1} -master sg13g2_IOPadIOVss
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  7] {sg13g2_IOPadIOVdd_3} -master sg13g2_IOPadIOVdd
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  8] {sg13g2_ui_in_0}
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location  9] {sg13g2_ui_in_1}
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location 10] {sg13g2_ui_in_2}
+place_pad -row IO_SOUTH -location [calc_horizontal_pad_location 11] {sg13g2_ui_in_3}
 
+place_pad -row IO_EAST -location [calc_vertical_pad_location  0] {sg13g2_ui_in_4}
+place_pad -row IO_EAST -location [calc_vertical_pad_location  1] {sg13g2_ui_in_5}
+place_pad -row IO_EAST -location [calc_vertical_pad_location  2] {sg13g2_ui_in_6}
+place_pad -row IO_EAST -location [calc_vertical_pad_location  3] {sg13g2_IOPadIOVss_4} -master sg13g2_IOPadIOVss
+place_pad -row IO_EAST -location [calc_vertical_pad_location  4] {sg13g2_IOPadVss_2} -master sg13g2_IOPadVss
+place_pad -row IO_EAST -location [calc_vertical_pad_location  5] {sg13g2_IOPadIOVdd_4} -master sg13g2_IOPadIOVdd
+place_pad -row IO_EAST -location [calc_vertical_pad_location  6] {sg13g2_loopback_in}
+place_pad -row IO_EAST -location [calc_vertical_pad_location  7] {sg13g2_loopback_out}
+place_pad -row IO_EAST -location [calc_vertical_pad_location  8] {sg13g2_IOPadIOVdd_5} -master sg13g2_IOPadIOVdd
+place_pad -row IO_EAST -location [calc_vertical_pad_location  9] {sg13g2_ui_in_7}
+place_pad -row IO_EAST -location [calc_vertical_pad_location 10] {sg13g2_IOPadVdd_2} -master sg13g2_IOPadVdd
+place_pad -row IO_EAST -location [calc_vertical_pad_location 11] {sg13g2_clk}
 
-place_pad -row IO_EAST -location [calc_vertical_pad_location  0] {sg13g2_IOPadIOVdd_2} -master sg13g2_IOPadIOVdd
-place_pad -row IO_EAST -location [calc_vertical_pad_location  1] {sg13g2_IOPadIOVss_2} -master sg13g2_IOPadIOVss
-place_pad -row IO_EAST -location [calc_vertical_pad_location  2] {sg13g2_IOPadVss_2} -master sg13g2_IOPadVss
-place_pad -row IO_EAST -location [calc_vertical_pad_location  3] {sg13g2_IOPadVdd_2} -master sg13g2_IOPadVdd
-place_pad -row IO_EAST -location [calc_vertical_pad_location  4] {sg13g2_addr_0}
-place_pad -row IO_EAST -location [calc_vertical_pad_location  5] {sg13g2_addr_1}
-place_pad -row IO_EAST -location [calc_vertical_pad_location  6] {sg13g2_addr_2}
-place_pad -row IO_EAST -location [calc_vertical_pad_location  7] {sg13g2_addr_3}
-place_pad -row IO_EAST -location [calc_vertical_pad_location  8] {sg13g2_addr_4}
-place_pad -row IO_EAST -location [calc_vertical_pad_location  9] {sg13g2_clk}
-place_pad -row IO_EAST -location [calc_vertical_pad_location 10] {sg13g2_rst_n}
-
-
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  0] {sg13g2_IOPadIOVdd_3} -master sg13g2_IOPadIOVdd
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  1] {sg13g2_IOPadIOVss_3} -master sg13g2_IOPadIOVss
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  2] {sg13g2_uio_0}
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  3] {sg13g2_uio_1}
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  4] {sg13g2_uio_2}
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  0] {sg13g2_uo_out_0}
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  1] {sg13g2_uio_7}
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  2] {sg13g2_uio_6}
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  3] {sg13g2_uio_5}
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  4] {sg13g2_uio_4}
 place_pad -row IO_NORTH -location [calc_horizontal_pad_location  5] {sg13g2_uio_3}
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  6] {sg13g2_uio_4}
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  7] {sg13g2_uio_5}
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  8] {sg13g2_uio_6}
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location  9] {sg13g2_uio_7}
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location 10] {sg13g2_IOPadIOVss_4} -master sg13g2_IOPadIOVss
-place_pad -row IO_NORTH -location [calc_horizontal_pad_location 11] {sg13g2_IOPadIOVdd_4} -master sg13g2_IOPadIOVdd
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  6] {sg13g2_IOPadIOVss_2} -master sg13g2_IOPadIOVss
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  7] {sg13g2_uio_2}
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  8] {sg13g2_uio_1}
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location  9] {sg13g2_uio_0}
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location 10] {sg13g2_IOPadIOVss_5} -master sg13g2_IOPadIOVss
+place_pad -row IO_NORTH -location [calc_horizontal_pad_location 11] {sg13g2_rst_n}
 
-place_pad -row IO_WEST -location [calc_vertical_pad_location  0] {sg13g2_IOPadIOVdd_5} -master sg13g2_IOPadIOVdd
-place_pad -row IO_WEST -location [calc_vertical_pad_location  1] {sg13g2_IOPadIOVss_5} -master sg13g2_IOPadIOVss
+place_pad -row IO_WEST -location [calc_vertical_pad_location  0] {sg13g2_IOPadVdd_1} -master sg13g2_IOPadVdd
+place_pad -row IO_WEST -location [calc_vertical_pad_location  1] {sg13g2_IOPadIOVdd_1} -master sg13g2_IOPadIOVdd
 place_pad -row IO_WEST -location [calc_vertical_pad_location  2] {sg13g2_IOPadVss_3} -master sg13g2_IOPadVss
-place_pad -row IO_WEST -location [calc_vertical_pad_location  3] {sg13g2_uo_out_0}
-place_pad -row IO_WEST -location [calc_vertical_pad_location  4] {sg13g2_uo_out_1}
-place_pad -row IO_WEST -location [calc_vertical_pad_location  5] {sg13g2_uo_out_2}
-place_pad -row IO_WEST -location [calc_vertical_pad_location  6] {sg13g2_uo_out_3}
-place_pad -row IO_WEST -location [calc_vertical_pad_location  7] {sg13g2_uo_out_4}
-place_pad -row IO_WEST -location [calc_vertical_pad_location  8] {sg13g2_uo_out_5}
-place_pad -row IO_WEST -location [calc_vertical_pad_location  9] {sg13g2_uo_out_6}
-place_pad -row IO_WEST -location [calc_vertical_pad_location 10] {sg13g2_uo_out_7}
+place_pad -row IO_WEST -location [calc_vertical_pad_location  3] {sg13g2_uo_out_7}
+place_pad -row IO_WEST -location [calc_vertical_pad_location  4] {sg13g2_uo_out_6}
+place_pad -row IO_WEST -location [calc_vertical_pad_location  5] {sg13g2_uo_out_5}
+place_pad -row IO_WEST -location [calc_vertical_pad_location  6] {sg13g2_uo_out_4}
+place_pad -row IO_WEST -location [calc_vertical_pad_location  7] {sg13g2_uo_out_3}
+place_pad -row IO_WEST -location [calc_vertical_pad_location  8] {sg13g2_uo_out_2}
+place_pad -row IO_WEST -location [calc_vertical_pad_location  9] {sg13g2_uo_out_1}
+place_pad -row IO_WEST -location [calc_vertical_pad_location 10] {sg13g2_IOPadIOVdd_2} -master sg13g2_IOPadIOVdd
+place_pad -row IO_WEST -location [calc_vertical_pad_location 11] {sg13g2_IOPadVdd_3} -master sg13g2_IOPadVdd
 
 
 # Place Corner Cells and Filler

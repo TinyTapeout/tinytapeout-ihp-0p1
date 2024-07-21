@@ -6,10 +6,13 @@ set clk_io_pct 0.2
 set clk_port [get_ports $clk_port_name]
 
 set clk_input_ports [get_ports {
-    addr_PAD
+    ctrl_sel_rst_n_PAD
+    ctrl_sel_inc_PAD
+    ctrl_ena_PAD
     clk_PAD
     rst_n_PAD
     ui_in_PAD
+    loopback_in_PAD
 }]
 
 set clk_inout_ports [get_ports {
@@ -18,6 +21,7 @@ set clk_inout_ports [get_ports {
 
 set clk_output_ports [get_ports {
     uo_out_PAD
+    loopback_out_PAD
 }]
 
 create_clock -name $clk_name -period $clk_period $clk_port

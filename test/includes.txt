@@ -1,4 +1,5 @@
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_top.v
+-v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/counter.v
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/basic_mux.v
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p00_wrapper.v
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p01_wrapper.v

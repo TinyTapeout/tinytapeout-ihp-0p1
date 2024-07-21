@@ -1,15 +1,22 @@
 `default_nettype none
 
 module tt_top (
-    inout [4:0] addr_PAD,
+    inout ctrl_sel_rst_n_PAD,
+    inout ctrl_sel_inc_PAD,
+    inout ctrl_ena_PAD,
     inout [7:0] ui_in_PAD,
     inout [7:0] uo_out_PAD,
     inout [7:0] uio_PAD,
     inout clk_PAD,
-    inout rst_n_PAD
+    inout rst_n_PAD,
+    inout loopback_in_PAD,
+    inout loopback_out_PAD,
+    inout unused_PAD
 );
 
-  wire [4:0] addr;
+  wire ctrl_sel_rst_n;
+  wire ctrl_sel_inc;
+  wire ctrl_ena;
   wire [7:0] ui_in;
   wire [7:0] uo_out;
   wire [7:0] uio_in;
@@ -17,26 +24,20 @@ module tt_top (
   wire [7:0] uio_oe;
   wire clk;
   wire rst_n;
+  wire loopback;
+  wire _unused;
 
-  sg13g2_IOPadIn sg13g2_addr_0 (
-      .p2c(addr[0]),
-      .pad({addr_PAD[0]})
+  sg13g2_IOPadIn sg13g2_ctrl_sel_rst_n (
+      .p2c(ctrl_sel_rst_n),
+      .pad({ctrl_sel_rst_n_PAD})
   );
-  sg13g2_IOPadIn sg13g2_addr_1 (
-      .p2c(addr[1]),
-      .pad({addr_PAD[1]})
+  sg13g2_IOPadIn sg13g2_ctrl_sel_inc (
+      .p2c(ctrl_sel_inc),
+      .pad({ctrl_sel_inc_PAD})
   );
-  sg13g2_IOPadIn sg13g2_addr_2 (
-      .p2c(addr[2]),
-      .pad({addr_PAD[2]})
-  );
-  sg13g2_IOPadIn sg13g2_addr_3 (
-      .p2c(addr[3]),
-      .pad({addr_PAD[3]})
-  );
-  sg13g2_IOPadIn sg13g2_addr_4 (
-      .p2c(addr[4]),
-      .pad({addr_PAD[4]})
+  sg13g2_IOPadIn sg13g2_ctrl_ena (
+      .p2c(ctrl_ena),
+      .pad({ctrl_ena_PAD})
   );
   sg13g2_IOPadIn sg13g2_ui_in_0 (
       .p2c(ui_in[0]),
@@ -78,6 +79,17 @@ module tt_top (
   sg13g2_IOPadIn sg13g2_rst_n (
       .p2c(rst_n),
       .pad({rst_n_PAD})
+  );
+
+  sg13g2_IOPadIn sg13g2_loopback_in (
+      .p2c(loopback),
+      .pad({loopback_in_PAD})
+  );
+
+  (* keep *)
+  sg13g2_IOPadIn sg13g2_unused (
+      .p2c(_unused),
+      .pad({unused_PAD})
   );
 
   sg13g2_IOPadInOut4mA sg13g2_uio_0 (
@@ -162,6 +174,19 @@ module tt_top (
       .pad({uo_out_PAD[7]})
   );
 
+  sg13g2_IOPadOut4mA sg13g2_loopback_out (
+      .c2p(loopback),
+      .pad({loopback_out_PAD})
+  );
+
+  wire [4:0] addr;
+
+  counter counter_I (
+      .ctrl_sel_rst_n(ctrl_sel_rst_n),
+      .ctrl_sel_inc  (ctrl_sel_inc),
+      .addr          (addr)
+  );
+
   wire [17:0] iw;
   wire [23:0] ow;
 
@@ -169,6 +194,7 @@ module tt_top (
   assign {uio_oe, uio_out, uo_out} = ow;
 
   basic_mux mux_I (
+      .ena (ctrl_ena),
       .addr(addr),
       .iw  (iw),
       .ow  (ow)
