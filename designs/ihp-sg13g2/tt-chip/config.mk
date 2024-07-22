@@ -48,5 +48,3 @@ export ADDITIONAL_GDS = \
 	$(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/bondpad/gds/bondpad_70x70.gds
 export ADDITIONAL_LIBS = \
 	$(IHP_PDK_ROOT)/ihp-sg13g2/libs.ref/sg13g2_io/liberty/sg13g2_io_dummy.lib
-export GDS_LAYER_MAP = \
-	$(PLATFORM_DIR)/sg13g2.map
