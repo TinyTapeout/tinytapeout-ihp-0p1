@@ -57,6 +57,11 @@ jobs:
         run: |
           make
 
+      - name: Generate fill
+        run: |
+          pip install klayout
+          scripts/add-fill.py
+
       - name: Upload flow results
         uses: actions/upload-artifact@v4
         if: always()
@@ -123,7 +128,7 @@ jobs:
 
       - name: Run DRC
         run: |
-          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_minimal.lydrc -rd cell=tt_top -rd report_file=sg13g2_minimal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final.gds
+          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_minimal.lydrc -rd cell=tt_top -rd report_file=sg13g2_minimal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final_fill.gds
 
       - name: Upload DRC results
         uses: actions/upload-artifact@v4
@@ -163,7 +168,7 @@ jobs:
 
       - name: Run DRC
         run: |
-          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc -rd cell=tt_top -rd report_file=sg13g2_maximal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final.gds
+          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc -rd cell=tt_top -rd report_file=sg13g2_maximal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final_fill.gds
 
       - name: Upload DRC results
         uses: actions/upload-artifact@v4
