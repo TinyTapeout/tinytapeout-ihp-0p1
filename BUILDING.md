@@ -16,6 +16,11 @@ export ORFS_ROOT=~/OpenROAD-flow-scripts
 git clone --recursive https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts $ORFS_ROOT
 ```
 
+Update the IHP platform files used by ORFS to more recent version from the IHP dev branch:
+
+```./sg13g2-update/update.sh
+```
+
 Follow the [ORFS local installation instructions](https://openroad-flow-scripts.readthedocs.io/en/latest/user/BuildLocally.html), or install the following dependencies manually:
 
 1. [KLayout](https://www.klayout.de/build.html), version 0.28.17 or later.
