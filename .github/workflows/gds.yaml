@@ -102,7 +102,7 @@ jobs:
           name: vcd
           path: test/test_mux.vcd
 
-  drc:
+  drc-minimal:
     needs: gds
     runs-on: ubuntu-22.04
     steps:
@@ -123,14 +123,14 @@ jobs:
 
       - name: Run DRC
         run: |
-          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2.lydrc -rd cell=tt_top ./results/ihp-sg13g2/tt-chip/base/6_final.gds
+          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_minimal.lydrc -rd cell=tt_top -rd report_file=sg13g2_minimal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final.gds
 
       - name: Upload DRC results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: drc-results
-          path: sg13g2_tt_top.lyrdb
+          name: drc-minimal-results
+          path: sg13g2_minimal.lyrdb
 
       - name: install xmllint
         run: |
@@ -140,4 +140,44 @@ jobs:
       - name: DRC summary
         if: always()
         run: |
-          scripts/drc-summary.sh sg13g2_tt_top.lyrdb >> $GITHUB_STEP_SUMMARY
+          scripts/drc-summary.sh sg13g2_minimal.lyrdb >> $GITHUB_STEP_SUMMARY
+
+  drc-maximal:
+    needs: gds
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Download GDS
+        uses: actions/download-artifact@v4
+        with:
+          name: gds
+
+      - name: Install KLayout
+        run: |
+          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
+          sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
+
+      - name: Run DRC
+        run: |
+          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc -rd cell=tt_top -rd report_file=sg13g2_maximal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final.gds
+
+      - name: Upload DRC results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: drc-maximal-results
+          path: sg13g2_maximal.lyrdb
+
+      - name: install xmllint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils
+
+      - name: DRC summary
+        if: always()
+        run: |
+          scripts/drc-summary.sh sg13g2_maximal.lyrdb >> $GITHUB_STEP_SUMMARY
