@@ -11,7 +11,7 @@ output_gds = f"{results_dir}/6_final_fill.gds"
 die_size = (2200, 2200)
 die_margin = 36
 fill_grid = 6
-fill_spacing = 6
+fill_spacing = 12
 fill_groups = [
     [("Activ", (1, 0), 4),
     ("GatPoly", (5, 0), 4),
@@ -21,6 +21,9 @@ fill_groups = [
     [("Metal3", (30, 0), 4)],
     [("Metal4", (50, 0), 4)],
     [("Metal5", (67, 0), 4)],
+]
+fill_exclude = [
+    ('dfpad', (41, 0)),
 ]
 
 layout = pya.Layout()
@@ -33,17 +36,23 @@ shift_box = pya.Box(-fill_grid*u//2, -fill_grid*u//2, (fill_grid*u+1)//2, (fill_
 fill_margin = pya.Vector(fill_spacing*u, fill_spacing*u)
 fill_origin = pya.Point(0, 0)
 
+fill_region_init = pya.Region(fill_box)
+for layer_name, (layer, datatype) in fill_exclude:
+    layer_index = layout.layer(layer, datatype)
+    exclude_region = pya.Region(top.begin_shapes_rec(layer_index))
+    fill_region_init -= exclude_region
+
 for fill_layers in fill_groups:
     layer_list = [layer_name for layer_name, *_ in fill_layers]
     print(f"Generating fill for {' & '.join(layer_list)}...")
     cell_index = layout.add_cell(f"FILL_{layer_list[0]}")
     cell_obj = layout.cell(cell_index)
-    fill_region = pya.Region(fill_box)
+    fill_region = fill_region_init
     for layer_name, (layer, datatype), size in fill_layers:
         layer_index = layout.layer(layer, datatype)
         cell_obj.shapes(layer_index).insert(pya.Box(-size*u//2, -size*u//2, (size*u+1)//2, (size*u+1)//2))
         exclude_region = pya.Region(top.begin_shapes_rec(layer_index))
-        fill_region -= exclude_region
+        fill_region = fill_region - exclude_region
     top.fill_region(fill_region, cell_index, shift_box, fill_origin, fill_region, fill_margin, None)
 
 layout.write(output_gds)
