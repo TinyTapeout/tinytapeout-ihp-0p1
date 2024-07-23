@@ -125,5 +125,5 @@ export IR_DROP_LAYER ?= Metal1
 export KLAYOUT_DRC_FILE = $(PLATFORM_DIR)/drc/sg13g2_minimal.lydrc
 
 #LVS Check
-export CDL_FILE = $(PLATFORM_DIR)/cdl/sg13g2_stdcell.cdl
+#export CDL_FILE = $(PLATFORM_DIR)/cdl/sg13g2_stdcell.cdl
 #export KLAYOUT_LVS_FILE = $(PLATFORM_DIR)/lvs/$(PLATFORM).lylvs

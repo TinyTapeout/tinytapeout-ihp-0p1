@@ -56,6 +56,7 @@ jobs:
           YOSYS_CMD: /opt/oss-cad-suite/bin/yosys
         run: |
           make
+          make $WORK_HOME/objects/ihp-sg13g2/tt-chip/base/6_final_concat.cdl
 
       - name: Generate fill
         run: |
@@ -186,3 +187,36 @@ jobs:
 #        if: always()
 #        run: |
 #          scripts/drc-summary.sh sg13g2_maximal.lyrdb >> $GITHUB_STEP_SUMMARY
+
+#  lvs:
+#    needs: gds
+#    runs-on: ubuntu-22.04
+#    env:
+#      WORK_HOME: ${{ github.workspace }}
+#
+#    steps:
+#      - name: checkout repo
+#        uses: actions/checkout@v4
+#        with:
+#          submodules: recursive
+#
+#      - name: Download GDS
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: gds
+#
+#      - name: Install KLayout
+#        run: |
+#          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
+#          sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
+#
+#      - name: Run LVS
+#        run: |
+#          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/lvs/sg13g2_full.lylvs -rd cdl_file=$WORK_HOME/objects/ihp-sg13g2/tt-chip/base/6_final_concat.cdl -rd report_file=sg13g2_lvs.lvsdb ./results/ihp-sg13g2/tt-chip/base/6_final.gds
+#
+#      - name: Upload LVS results
+#        uses: actions/upload-artifact@v4
+#        if: always()
+#        with:
+#          name: lvs-results
+#          path: sg13g2_lvs.lvsdb
