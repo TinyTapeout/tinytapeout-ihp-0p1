@@ -32,8 +32,11 @@ top = layout.top_cell()
 u = round(1/layout.dbu)
 
 fill_box = pya.Box(die_margin*u, die_margin*u, (die_size[0]-die_margin)*u, (die_size[1]-die_margin)*u)
-shift_box = pya.Box(-fill_grid*u//2, -fill_grid*u//2, (fill_grid*u+1)//2, (fill_grid*u+1)//2)
-fill_margin = pya.Vector(fill_spacing*u, fill_spacing*u)
+cell_box = pya.Box(-fill_grid*u//2-fill_spacing*u, -fill_grid*u//2-fill_spacing*u,
+                   (fill_grid*u+1)//2+fill_spacing*u, (fill_grid*u+1)//2+fill_spacing*u)
+row_step = pya.Vector(fill_grid*u, 0)
+column_step = pya.Vector(0, fill_grid*u)
+fill_margin = pya.Vector(0, 0)
 fill_origin = pya.Point(0, 0)
 
 fill_region_init = pya.Region(fill_box)
@@ -47,13 +50,13 @@ for fill_layers in fill_groups:
     print(f"Generating fill for {' & '.join(layer_list)}...")
     cell_index = layout.add_cell(f"FILL_{layer_list[0]}")
     cell_obj = layout.cell(cell_index)
-    fill_region = fill_region_init
+    fill_region = fill_region_init.dup()
     for layer_name, (layer, datatype), size in fill_layers:
         layer_index = layout.layer(layer, datatype)
         cell_obj.shapes(layer_index).insert(pya.Box(-size*u//2, -size*u//2, (size*u+1)//2, (size*u+1)//2))
         exclude_region = pya.Region(top.begin_shapes_rec(layer_index))
-        fill_region = fill_region - exclude_region
-    top.fill_region(fill_region, cell_index, shift_box, fill_origin, fill_region, fill_margin, None)
+        fill_region -= exclude_region
+    top.fill_region(fill_region, cell_index, cell_box, row_step, column_step, fill_origin, fill_region, fill_margin, None)
 
 layout.write(output_gds)
 
