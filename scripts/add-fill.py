@@ -11,7 +11,7 @@ output_gds = f"{results_dir}/6_final_fill.gds"
 die_size = (2200, 2200)
 die_margin = 36
 fill_grid = 6
-fill_spacing = 12
+fill_spacing = 4
 fill_groups = [
     [("Activ", (1, 0), 4),
     ("GatPoly", (5, 0), 4),
