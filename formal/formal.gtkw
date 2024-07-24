@@ -1,0 +1,88 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Wed Jul 24 13:38:14 2024
+[*]
+[dumpfile] "/home/matt/work/asic-workshop/shuttle-tt08/tinytapeout-ihp-0p1/formal/config/engine_0/trace0.vcd"
+[dumpfile_mtime] "Wed Jul 24 13:37:13 2024"
+[dumpfile_size] 13126
+[savefile] "/home/matt/work/asic-workshop/shuttle-tt08/tinytapeout-ihp-0p1/formal/formal.gtkw"
+[timestart] 0
+[size] 2124 977
+[pos] -1 -1
+*-2.866297 4 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tt_top_formal.
+[treeopen] tt_top_formal.tt_top.
+[treeopen] tt_top_formal.tt_top.mux_I.
+[treeopen] tt_top_formal.tt_top.mux_I.p00_I.
+[treeopen] tt_top_formal.tt_top.mux_I.p00_I.p_wrapper.
+[treeopen] tt_top_formal.tt_top.mux_I.p03_I.
+[treeopen] tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.
+[sst_width] 333
+[signals_width] 534
+[sst_expanded] 1
+[sst_vpaned_height] 288
+@28
+tt_top_formal.clk
+@22
+tt_top_formal.tt_top.counter_I.addr[4:0]
+@28
+tt_top_formal.ctrl_ena
+tt_top_formal.ctrl_sel_inc
+tt_top_formal.ctrl_sel_rst_n
+tt_top_formal.loopback_in
+tt_top_formal.loopback_out
+tt_top_formal.rst_n
+@22
+tt_top_formal.ui_in[7:0]
+tt_top_formal.uio[7:0]
+tt_top_formal.uo_out[7:0]
+@800200
+-bidirs
+@22
+tt_top_formal.tt_top.uio_in[7:0]
+tt_top_formal.tt_top.uio_oe[7:0]
+tt_top_formal.tt_top.uio_out[7:0]
+@1000200
+-bidirs
+@800201
+-wrapper1
+@29
+tt_top_formal.tt_top.mux_I.p00_I.ena
+@23
+tt_top_formal.tt_top.mux_I.p00_I.p_wrapper.tt_um_formal.ui_in[7:0]
+tt_top_formal.tt_top.mux_I.p00_I.p_wrapper.tt_um_formal.uio_in[7:0]
+tt_top_formal.tt_top.mux_I.p00_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+tt_top_formal.tt_top.mux_I.p00_I.p_wrapper.tt_um_formal.uio_out[7:0]
+tt_top_formal.tt_top.mux_I.p00_I.p_wrapper.tt_um_formal.uo_out[7:0]
+@1000201
+-wrapper1
+@28
+tt_top_formal.tt_top.mux_I.p01_I.ena
+tt_top_formal.tt_top.mux_I.p02_I.ena
+@800200
+-wrapper4
+@28
+tt_top_formal.tt_top.mux_I.p03_I.ena
+@22
+tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.ui_in[7:0]
+tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_in[7:0]
+@c00022
+tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+@28
+(0)tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+(1)tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+(2)tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+(3)tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+(4)tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+(5)tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+(6)tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+(7)tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_oe[7:0]
+@1401200
+-group_end
+@22
+tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uio_out[7:0]
+tt_top_formal.tt_top.mux_I.p03_I.p_wrapper.tt_um_formal.uo_out[7:0]
+@1000200
+-wrapper4
+[pattern_trace] 1
+[pattern_trace] 0
