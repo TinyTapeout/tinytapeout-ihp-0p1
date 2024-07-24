@@ -22,21 +22,23 @@ module tt_um_formal (
     // let solver drive the outputs
     rand reg [7:0] anyseq1; assign uo_out   = anyseq1;
     // bidirectional outputs
-    rand reg [7:0] anyseq2; assign uio_out  = anyseq2;
-    // bidirectional enables
-    rand reg [7:0] anyseq3; assign uio_oe   = anyseq3;
+    rand reg [3:0] anyseq2; assign uio_out[3:0]  = anyseq2;
+    // bidirectional enables - hard code bottom 4 are outputs
+    assign uio_oe[7:0] = 8'b00001111;
     
     always @(*) begin
         if(ena) begin
             // if design is enabled, looped back inputs must = outputs
-            assert(ui_in == uo_out);
-            // bidirectional outputs, only should match if oe is set
-            assert(uio_in == (uio_out & uio_oe));
+            ui_loop: assert(ui_in == uo_out);
+            // bidirectional outputs
+            bidir: assert(uio_in[7:4] == uio_out[3:0]);
+            // some covers
             cover(ui_in == 8'hAA);
             cover(uio_in == 8'hAA);
         end else begin
             // otherwise inputs must be 0
             assert(ui_in == 0);
+            assert(uio_in == 0);
             // design is in reset 
             assert(rst_n == 0);
             // no clock

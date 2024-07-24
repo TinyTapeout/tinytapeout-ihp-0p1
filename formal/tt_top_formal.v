@@ -1,3 +1,4 @@
+`default_nettype none
 
 module tt_top_formal ();
 
@@ -29,8 +30,8 @@ tt_top tt_top(
 
     // loopback the output to the input
     assign ui_in = uo_out;
-    // loopback the bidirectionals, if they're set as output
-    assign tt_top.uio_in = tt_top.uio_out & tt_top.uio_oe;
+    // bidirectionals loop top half to bottom half
+    assign uio[7:4] = uio[3:0];
 
     // only useful for cover
     initial assume(rst_n == 0);
