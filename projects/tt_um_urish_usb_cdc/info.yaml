@@ -1,0 +1,89 @@
+---
+# TinyTapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
+# Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt_um_usb_cdc.v
+    - usb_cdc/usb_cdc/bulk_endp.v
+    - usb_cdc/usb_cdc/ctrl_endp.v
+    - usb_cdc/usb_cdc/in_fifo.v
+    - usb_cdc/usb_cdc/out_fifo.v
+    - usb_cdc/usb_cdc/phy_rx.v
+    - usb_cdc/usb_cdc/phy_tx.v
+    - usb_cdc/usb_cdc/sie.v
+    - usb_cdc/usb_cdc/usb_cdc.v
+  top_module:  "tt_um_urish_usb_cdc"      # Put the name of your top module here, must start with "tt_um_". Make it unique by prepending your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+# Before changing this, please reach out to us on discord to discuss your design.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Uri Shaked"      # Your name
+  title:        "USB CDC (Serial)"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "USB to Serial bridge"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      All the magic happens in https://github.com/davidthings/tinyfpga_bx_usbserial.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      1. Connect `usb_p` and `usb_n` pins to D+ / D- USB pins either through 68 ohm resistors or directly (the resistors are recommended, but not mandatory).
+      2. Connect a 1.5k ohm resistor between `dp_pu_o` and `usb_p` (D+).
+      3. Set the clock frequency to 48 MHz.
+
+      The device should appear as a serial port on your computer, with vendor_id=1209 and product_id=5454 (https://pid.codes/1209/5454/).
+      Data received from USB host will appear on the output pins (`rx`) when `rx_ready` goes high.
+      You can send data to the USB device by waiting for `tx_ready` to go high,
+      setting the input pins (`tx`) to the byte you'd like to transmit, and setting `tx_valid` high.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - tx[0]
+    - tx[1]
+    - tx[2]
+    - tx[3]
+    - tx[4]
+    - tx[5]
+    - tx[6]
+    - tx[7]
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - rx[0]
+    - rx[1]
+    - rx[2]
+    - rx[3]
+    - rx[4]
+    - rx[5]
+    - rx[6]
+    - rx[7]
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - usb_p
+    - usb_n
+    - tx_valid
+    - tx_ready
+    - rx_valid
+    - rx_ready
+    - dp_pu_o
+    - configured
+
+# The following fields are optional
+  tag:          "usb, serial"      # comma separated list of tags: test encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "USB breakout board, 1.5k ohm resistor"      # Describe any external hardware needed
+  discord:      "urish"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     48000000       # Clock frequency in Hz (if required)
+  picture:      "docs/terminal.png"      # relative path to a picture in your repository

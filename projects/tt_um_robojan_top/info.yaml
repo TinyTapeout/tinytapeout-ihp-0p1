@@ -1,0 +1,177 @@
+---
+# TinyTapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+  # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
+  # Source files must be in ./src and you must list each source file separately
+  source_files:
+    - ball_painter.v
+    - block_state.v
+    - blocks_painter.v
+    - border_painter.v
+    - breakout.v
+    - game_logic.v
+    - lives_painter.v
+    - paddle_painter.v
+    - sound_gen.v
+    - spi_ctrl.v
+    - spi_if.v
+    - synchronizer.v
+    - tt_um_robojan_top.v
+    - vga_timing.v
+    - video_mux.v
+  top_module:  "tt_um_robojan_top"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Robbert-Jan de Jager"      # Your name
+  title:        "Tiny Breakout"             # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "This is a small breakout game implemented in HDL. It uses a VGA connector to output the video signal.
+      The game is controlled by 3 buttons.
+      The left button moves the paddle to the left, the right button moves the paddle to the right and the action button starts the game.
+      The game is over when all blocks are destroyed or when the ball hits the bottom of the screen."      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+    # Basic operation
+    The core of the design is the vga_timing module. This module generates all the required timing signals. Some of these signals like hsync and vsync
+    are used to generate the video signal, while others like the horizontal and vertical position are used to generate the graphics. The horizontal and
+    vertical sync signals are also used for the game logic.
+
+    Before outputting the video signal the video mux selects the correct input color to display. It does so based on the highest priority component that
+    wants to output a color.
+
+    We have multiple painter modules. These generate from the current game state and the current horizontal and vertical position the correct color to
+    display. Ideally the painters would not contribute to the game logic, but for optimization reasons they do.
+
+    While drawing a frame the game logic keeps track of collisions. It does so by checking if multiple painters want to draw at the same position. If so
+    it will latch a collision, which will be processed after drawing the frame.
+
+    At the end of each frame the game logic will calculate the next ball position, taking collisions into account. The collision with the paddle is special.
+    To have an entertaining game that does not play the same every time the ball will bounce off the paddle at a different angle depending on where it hits.
+    This is done by splitting the paddle into multiple segments and checking for collisions with these segments. The game logic will look at the segment
+    when a paddle collision was registered. An exception to the end of frame gamestate update is the breaking of blocks. It would require too much memory to
+    keep the updated state for the next frame. Instead we will update the row of blocks that was just finished drawing.
+
+    We can display a grid of 13x16 blocks. This requires 208 bits of memory. This is a lot of memory for such a small design and takes up a lot of space.
+    To reduce the number of connections the state has been put into a shift register that outputs one row at a time. This shift register is rotated 13 bits
+    when we reach the end of drawing a row of blocks. Also we can write to the shift register the new block state if a block has been broken. This is done
+    one clock cycle before shifting to the next row. 1 clock cycle after shifting to the next row we load the current row into a buffer which will be used
+    to update the state.
+
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+    This is a small breakout game implemented in HDL. It uses a VGA connector to output the video signal.
+    The game is controlled by 3 buttons.
+    The left button moves the paddle to the left, the right button moves the paddle to the right and the action button starts the game.
+    The game is over when all blocks are destroyed or when the ball hits the bottom of the screen.
+
+    ## Required hardware
+    This project requires a VGA monitor and a VGA DAC. An easy way to create the VGA DAC is to use 3 2-bit R2R DACs.
+    The 2-bit R2R DACs can be created using 2 resistors per bit. The resistors should be 200Ohm and 390Ohm. For the 3.3V power supply.
+
+    **What has not been verified is the current sourcing capability of the ASIC, If it can not at least source 10mA through each pin and
+    30mA through the power supply pins you should add a buffer before the DAC.**
+
+    The VGA DAC should be connected as follows:
+    ```
+               ___       ___
+    Bit 0 ----|___|--+--|___|-- GND
+               390   |   390
+                    .-.
+                    | |
+                200 | |
+                    '-'
+              ____   |
+    Bit 1 ---|____|--+---- Out
+              390
+    ```
+
+    Every color should have an identical copy of this DAC. The red DAC should be connected to the red VGA pin,
+    the green DAC to the green VGA pin and the blue DAC to the blue VGA pin. The outputs of the DACs should be connected to the VGA
+    connector. The HSync and VSync pins should also be connected to the VGA connector.
+    The following connections need to be made to the VGA connector:
+    - Red DAC output to VGA connector pin 1
+    - Green DAC output to VGA connector pin 2
+    - Blue DAC output to VGA connector pin 3
+    - HSync to VGA connector pin 13
+    - VSync to VGA connector pin 14
+    - GND to VGA connector pin 5, 6, 7, 8
+
+    ## SPI interface
+    For changing the game state externally you can use the SPI interface.
+    The SPI interface returns the current game state when reading and accepts a few commands when writing.
+    The SPI interface uses 16 bit words.
+
+    The returned state is as follows:
+    - bit 0-12: The block state of the current row. Use HBlank and VBlank to determine which row is currently being drawn.
+    - bit 13: right button state
+    - bit 14: left button state
+    - bit 15: action button state
+    - bit 16: collision state. This bit is set when a collision has been detected.
+    - bit 17: ball out of bounds. This bit is set when the ball is off screen.
+    - bit 18: game state: 0 = game idle, 1 = game running
+    - bit 19-20: remaining lives
+
+    When writing the first word is the command word, the following words are the data words for the command.
+    Command words:
+    - 0x0000: Do nothing. Usefull when you want to read the state.
+    - 0x0001: Write a row state. This will shift the state to the next row. Be sure to only use this during the VBlank and call
+              this with 15 words to completely draw the screen.
+    - 0x0002: Send control word. The next word is the control word. The control word is as follows:
+        - bit[0]: Send the stop game command.
+
+    ## Board configuration
+    The ASIC requires an input clock of 25.175MHz. The 7-Segment display is not used.
+
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - MOSI
+    - SCK
+    - slave select
+    - none
+    - none
+    - Button left
+    - Button right
+    - Button action
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - HSync
+    - VSync
+    - Red output bit 0
+    - Red output bit 1
+    - Green output bit 0
+    - Green output bit 1
+    - Blue output bit 0
+    - Blue output bit 1
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - MISO
+    - HBlank
+    - VBlank
+    - sound output. Connect to a speaker with amplifier.
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "game, breakout, video, vga"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "3x 2bit DAC for the red, green and blue video signals. VGA connector. 3 buttons."      # Describe any external hardware needed
+  discord:      "Robojan"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/robojan/tt04-breakout-submission/blob/main/README.md"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     25175000       # Clock frequency in Hz (if required)
+  picture:      "images/screenshot.jpg"      # relative path to a picture in your repository (must be 512kb or less)

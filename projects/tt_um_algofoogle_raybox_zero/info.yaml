@@ -1,0 +1,68 @@
+# Tiny Tapeout project information
+project:
+  title:        raybox-zero TT07 edition
+  author:       algofoogle (Anton Maurovic)
+  discord:      algofoogle
+  description:  TT07 improved resub of 'simple VGA ray caster game demo' from TT04
+  language:     Verilog
+  clock_hz:     25_000_000  # Clock frequency in Hz (or 0 if not applicable)
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "6x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+
+  # Your top module name must start with "tt_um_". Make it unique by including your github username:
+  top_module:  "tt_um_algofoogle_raybox_zero"
+
+  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:
+    - raybox-zero/src/rtl/fixed_point_params.v
+    - raybox-zero/src/rtl/helpers.v
+    - raybox-zero/src/rtl/rbzero.v
+    - raybox-zero/src/rtl/spi_registers.v
+    - raybox-zero/src/rtl/debug_overlay.v
+    - raybox-zero/src/rtl/map_overlay.v
+    - raybox-zero/src/rtl/map_rom.v
+    - raybox-zero/src/rtl/pov.v
+    - raybox-zero/src/rtl/lzc.v
+    - raybox-zero/src/rtl/reciprocal.v
+    - raybox-zero/src/rtl/wall_tracer.v
+    - raybox-zero/src/rtl/row_render.v
+    - raybox-zero/src/rtl/vga_mux.v
+    - raybox-zero/src/rtl/vga_sync.v
+    - raybox-zero/src/rtl/top_raybox_zero_fsm.v
+    - project.v
+
+# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
+pinout:
+  # Inputs
+  ui[0]: 'SPI in: pov_sclk'
+  ui[1]: 'SPI in: pov_mosi'
+  ui[2]: 'SPI in: pov_ss_n'
+  ui[3]: debug
+  ui[4]: inc_px
+  ui[5]: inc_py
+  ui[6]: reg
+  ui[7]: gen_tex
+
+  # Outputs: Tiny VGA PMOD (https://tinytapeout.com/specs/pinouts/#vga-output)
+  uo[0]: red[1]
+  uo[1]: green[1]
+  uo[2]: blue[1]
+  uo[3]: vsync_n
+  uo[4]: red[0]
+  uo[5]: green[0]
+  uo[6]: blue[0]
+  uo[7]: hsync_n
+
+  # Bidirectional pins
+  uio[0]: 'Out: tex_csb'
+  uio[1]: 'Out: tex_sclk'
+  uio[2]: 'In: "SPI2" reg_sclk'
+  uio[3]: 'In: "SPI2" reg_mosi'
+  uio[4]: 'In: "SPI2" reg_ss_n'
+  uio[5]: 'I/O: tex_io0'
+  uio[6]: 'In: tex_io1'
+  uio[7]: 'In: tex_io2'
+
+# Do not change!
+yaml_version: 6

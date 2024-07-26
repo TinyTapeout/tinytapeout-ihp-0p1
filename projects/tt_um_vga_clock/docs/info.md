@@ -15,7 +15,7 @@ Every minute the colours cycle.
 
 ## How to test
 
-Hook up a VGA monitor to the outputs and provide a clock at 31.5 MHz. 
+Hook up a VGA monitor to the outputs and provide a clock at 31.5 MHz.
 
 Adjust time with the inputs[2:0], and choose the type of VGA PMOD with the input[3].
 

@@ -29,7 +29,7 @@ module tt_um_chip_rom (
   initial begin
 		$readmemh(`ROM_VMEM_PATH, rom_data);
 	end
-	
+
 	assign uo_out  = rom_data[ui_in];
 	assign uio_out = 8'h00;
 	assign uio_oe  = 8'h00;

@@ -1,0 +1,86 @@
+---
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
+# Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt_um_no_time_for_squares_tommythorn.v
+    - clock.v
+    - vga.v
+    - tile.v
+  top_module:  "tt_um_no_time_for_squares_tommythorn"
+
+  # How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "3x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Tommy Thorn"
+  title:        "No Time for Squares"
+  language:     "Verilog"
+  description:  "It's a 12-hour clock, drawn with triangles rendered by a race-the-beam triangle render"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+
+      Every frame the 640x480 VGA matrix is scanned, advancing the
+      state of the intersecting lines of the three triangles.  If the
+      (x,y) coordinate of the "beam" lines on the positive side of
+      each line, the beam is inside the triangle.  Among the visible
+      triangles, the highest priority triangle sets the color, else we
+      default to a grey color.  Twelve dots are also marked, to make
+      it easier to read the clock.
+
+      The algorithm might be easily understood by examining the
+      software model in Rust, in the `sw` directory.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Hook up the Tiny VGA interface and connect a VGA monitor.  Hope it works.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - clock
+    - reset
+    - hour, advance hour
+    - minute, advance minute
+    - unused
+    - unused
+    - debugsel\[1]
+    - debugsel\[0]
+# Outputs are supposed to match TinyVGA (cf. https://tinytapeout.com/specs/pinouts/)
+  outputs:
+    - R1
+    - G1
+    - B1
+    - vsync
+    - R0
+    - G0
+    - B0
+    - hsync
+# So many ways this can fail, so this gets us a minimum of insight, selected by debugsel
+  bidirectional:
+    - debug\[7]
+    - debug\[6]
+    - debug\[5]
+    - debug\[4]
+    - debug\[3]
+    - debug\[2]
+    - debug\[1]
+    - debug\[0]
+
+# The following fields are optional
+  tag:          "clock,video"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "TinyVGA, 31.5 MHz clock, reset, hour & min buttons"
+  discord:      ".tommythorn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "TBD"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     31500000   # Clock frequency in Hz (if required)
+  picture:      "clock.png"      # relative path to a picture in your repository (must be 512kb or less)

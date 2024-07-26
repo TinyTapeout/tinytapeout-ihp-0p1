@@ -1,0 +1,76 @@
+---
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
+# Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt_um_flappy_vga_cutout1.v
+    - vgaControl.v
+    - bitGen.v
+    - gameControl.v
+  top_module:  "tt_um_flappy_vga_cutout1"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Daniel Robinson"      # Your name
+  title:        "Flappy VGA"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "A simple flappy bird clone with a button input and 640x480 VGA output. 25MHz clock required."      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      There are three main modules in the design. The vgaControl module takes in the clock and outputs the horizontal and vertical sync signals, and provides the current pixel coordinate to the bitGen module. The gameControl module takes the button input and updates the game state (bird position, pipe position, hole position, score, etc) each frame. The bitGen module takes in the game state and pixel coordinate and outputs the color that the current pixel should be.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      The clock input should be set to 25MHz (or 25.179MHz, either should be close enough). ui_in[0] should be connected to a debounced button that goes low when pressed. The VGA output is compatible with the Tiny VGA PMOD (https://tinytapeout.com/specs/pinouts/). Once everything is connected, a reset may need to be triggered before normal operation. An image with a yellow square, green pillars, and blue background should appear. Pressing the button should cause the bird to flap and start moving towards the pipes. The goal is to go through the gap in the pipes. Your score will count up in binary on the bidirectional pins each time you successfully make it through a pipe.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - Button
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - R1
+    - G1
+    - B1
+    - vsync
+    - R0
+    - G0
+    - B0
+    - hsync
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - score[0]
+    - score[1]
+    - score[2]
+    - score[3]
+    - score[4]
+    - score[5]
+    - score[6]
+    - score[7]
+
+# The following fields are optional
+  tag:          "vga, game, digital, video"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "Some kind of VGA adapter needed. Compatible with Tiny VGA PMOD. Also needs a debounced button that goes low when pressed on ui_in[0]."      # Describe any external hardware needed
+  discord:      "cutout"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/Cutout1/tt05-flappy-vga/blob/main/README.md"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:    25000000       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)

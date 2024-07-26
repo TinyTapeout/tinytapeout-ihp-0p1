@@ -2,21 +2,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Company: Ridotech
 // Engineer: Juan Manuel Rico
-// 
-// Create Date:    09:34:23 30/09/2017 
+//
+// Create Date:    09:34:23 30/09/2017
 // Module Name:    vga_controller
 // Description:    Basic control for 640x480@72Hz VGA signal.
 //
-// Dependencies: 
+// Dependencies:
 //
-// Revision: 
+// Revision:
 // Revision 0.01 - File Created for Roland Coeurjoly (RCoeurjoly) in 640x480@85Hz.
 // Revision 0.02 - Change for 640x480@60Hz.
 // Revision 0.03 - Solved some mistakes.
 // Revision 0.04 - Change for 640x480@72Hz and output signals 'activevideo'
 //                 and 'px_clk'.
 //
-// Additional Comments: 
+// Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
 module p03_VgaSyncGen (

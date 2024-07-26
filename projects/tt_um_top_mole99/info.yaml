@@ -1,0 +1,88 @@
+---
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
+# Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt_um_top_mole99.sv
+    - top.sv
+    - sprite_access.sv
+    - sprite_data.sv
+    - sprite_movement.sv
+    - background.sv
+    - timing.sv
+    - synchronizer.sv
+    - spi_receiver.sv
+  top_module:  "tt_um_top_mole99"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Leo Moser"      # Your name
+  title:        "One Sprite Pony"      # Project title
+  language:     "SystemVerilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "This SVGA design has exactly one trick up its sleeve: it displays a sprite!"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      A one-trick pony is someone or something that is good at doing only one thing. Accordingly, a one-sprite pony can display only one sprite, and that's exactly what this design does:
+
+      This Verilog design produces SVGA 800x600 60Hz output with a background and one sprite. Internally, the resolution is reduced to 100x75, thus one pixel of the sprite is actually 8x8 pixels.
+      The design can operate at either a 40 MHz pixel clock or a 10 MHz pixel clock by setting a configuration bit.
+
+      The sprite is 12x12 pixel in size and is initialized at startup with a pixelated version of the Tiny Tapeout logo.
+
+      An SPI receiver accepts various commands, e.g. to replace the sprite data, change the colors or set the background.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Connect a Tiny VGA to the output Pmod connector. By default, you should see the TinyTapeout logo moving around the screen. By sending commands over SPI via the bidirectional Pmod you can change the sprite and the background, set the sprite position and much more. See the longer documentation for all commands.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - R1
+    - G1
+    - B1
+    - VS
+    - R0
+    - G0
+    - B0
+    - HS
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - CS
+    - MOSI
+    - MISO
+    - SCK
+    - Vertical Pulse
+    - Horizontal Pulse
+    - none
+    - none
+
+# The following fields are optional
+  tag:          "SVGA, sprite, animation"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "Tiny VGA PMOD"      # Describe any external hardware needed
+  discord:      "mole99"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/mole99/tt05-one-sprite-pony"      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     40 MHz or 10 MHz       # Clock frequency in Hz (if required)
+  picture:      "img/summary.png"      # relative path to a picture in your repository (must be 512kb or less)

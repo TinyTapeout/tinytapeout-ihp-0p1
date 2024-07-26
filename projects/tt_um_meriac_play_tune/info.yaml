@@ -1,0 +1,74 @@
+---
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+  source_files:   # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. Source files must be in ./src
+    - player.v
+    - tune.v
+  top_module:  "tt_um_meriac_play_tune"
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Milosch Meriac"                      # Your name
+  title:        "Super Mario Tune on A Piezo Speaker" # Project title
+  language:     "Verilog"                             # other examples include Verilog, Amaranth, VHDL, etc
+                                                      # Short description of what your project does
+  description:  "Plays Super Mario Tune over a Piezo Speaker connected across uio_out[1:0]"
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      Converts an RTTL ringtone into verilog using Python - and plays it back using differential PWM modulation
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Provide 100kHz clock on "clk" pin, briefly hit reset low ("rst_n") and uio_out[1:0] will play a differential sound wave over a connected piezo speaker (Super Mario)
+
+# All inputs are copied to the outputs for basic design verification
+  inputs:
+    - ui_in[0]
+    - ui_in[1]
+    - ui_in[2]
+    - ui_in[3]
+    - ui_in[4]
+    - ui_in[5]
+    - ui_in[6]
+    - ui_in[7]
+
+# All inputs are copied to the outputs for basic design verification
+  outputs:
+    - ui_in[0]
+    - ui_in[1]
+    - ui_in[2]
+    - ui_in[3]
+    - ui_in[4]
+    - ui_in[5]
+    - ui_in[6]
+    - ui_in[7]
+
+# Connect piezo speaker across uio_out[0] & uio_out[1]
+  bidirectional:
+    - piezo_speaker_p (uio_out[0])
+    - piezo_speaker_n (uio_out[1])
+    - GND
+    - GND
+    - GND
+    - GND
+    - GND
+    - GND
+
+# The following fields are optional
+  tag:          "pwm, sound, signal generator, music"             # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  "Piezo speaker connected across io_out[1:0]"      # Describe any external hardware needed
+  discord:      "foolsdelight"                                    # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     "https://github.com/meriac/tt05-play-tune#readme" # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     100000                                            # Clock frequency in Hz (if required)
+  picture:      "img/chip-design.jpg"                             # relative path to a picture in your repository (must be 512kb or less)

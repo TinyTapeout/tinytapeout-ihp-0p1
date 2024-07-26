@@ -1,6 +1,6 @@
 `default_nettype none
 module p03_vga_clock (
-    input wire clk, 
+    input wire clk,
     input wire reset_n,
     input wire adj_hrs,
     input wire adj_min,
@@ -85,11 +85,11 @@ module p03_vga_clock (
     localparam MAX_BUT_RATE = 16;
     localparam DEC_COUNT = 1;
     localparam MIN_COUNT = 2;
-    p03_button_pulse #(.MIN_COUNT(MIN_COUNT), .DEC_COUNT(DEC_COUNT), .MAX_COUNT(MAX_BUT_RATE)) 
+    p03_button_pulse #(.MIN_COUNT(MIN_COUNT), .DEC_COUNT(DEC_COUNT), .MAX_COUNT(MAX_BUT_RATE))
         pulse_sec (.clk(px_clk), .clk_en(but_clk_en), .button(adj_sec), .pulse(adj_sec_pulse), .reset(reset));
-    p03_button_pulse #(.MIN_COUNT(MIN_COUNT), .DEC_COUNT(DEC_COUNT), .MAX_COUNT(MAX_BUT_RATE)) 
+    p03_button_pulse #(.MIN_COUNT(MIN_COUNT), .DEC_COUNT(DEC_COUNT), .MAX_COUNT(MAX_BUT_RATE))
         pulse_min (.clk(px_clk), .clk_en(but_clk_en), .button(adj_min), .pulse(adj_min_pulse), .reset(reset));
-    p03_button_pulse #(.MIN_COUNT(MIN_COUNT), .DEC_COUNT(DEC_COUNT), .MAX_COUNT(MAX_BUT_RATE)) 
+    p03_button_pulse #(.MIN_COUNT(MIN_COUNT), .DEC_COUNT(DEC_COUNT), .MAX_COUNT(MAX_BUT_RATE))
         pulse_hrs (.clk(px_clk), .clk_en(but_clk_en), .button(adj_hrs), .pulse(adj_hrs_pulse), .reset(reset));
 
     // these are in blocks
@@ -105,7 +105,7 @@ module p03_vga_clock (
     wire [9:0] x_px;          // X position for actual pixel.
     wire [9:0] y_px;          // Y position for actual pixel.
 
-    // blocks are 16 x 16 px. total width = 8 * blocks of 4 =  512. 
+    // blocks are 16 x 16 px. total width = 8 * blocks of 4 =  512.
     /* verilator lint_off WIDTH */
     wire [5:0] x_block = (x_px -64) >> 4;
     wire [5:0] y_block = (y_px -200) >> 4;
@@ -113,7 +113,7 @@ module p03_vga_clock (
     reg [5:0] x_block_q;
     reg [5:0] y_block_q;
    // reg [5:0] x_block = 0;
-   // reg [5:0] y_block = 0; 
+   // reg [5:0] y_block = 0;
 
     wire activevideo;
     wire px_clk;
@@ -148,12 +148,12 @@ module p03_vga_clock (
                         x_block < FONT_W * 8 ? sec_u :
                         BLANK;
     /* verilator lint_on WIDTH */
-   
+
     assign rrggbb = activevideo && draw ? color : 6'b0;
     assign font_addr = digit_index + y_block;
     reg draw;
     always @(posedge px_clk) begin
-        if(reset) 
+        if(reset)
             draw <= 0;
         x_block_q <= x_block;
         y_block_q <= y_block;
@@ -162,7 +162,7 @@ module p03_vga_clock (
             draw <= font_out[(FONT_W - 1) - col_index_q];
         else
             draw <= 0;
-    
+
     end
 endmodule
 `default_nettype wire

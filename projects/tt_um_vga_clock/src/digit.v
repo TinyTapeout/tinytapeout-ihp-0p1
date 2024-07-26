@@ -19,7 +19,7 @@ module p03_digit
     output reg [COL_INDEX_W-1:0] col_index
     );
 
-    localparam COL_INDEX_W = $clog2(FONT_W); 
+    localparam COL_INDEX_W = $clog2(FONT_W);
 
     reg [5:0] digit_index_mem [0:11];
     reg [COL_INDEX_W-1:0] col_index_mem [0:NUM_BLOCKS];
@@ -41,6 +41,6 @@ module p03_digit
         color <= color_index_mem[char + color_offset];
         /* verilator lint_on WIDTH */
     end
-   
+
 endmodule
 `default_nettype wire

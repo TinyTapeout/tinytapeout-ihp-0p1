@@ -12,9 +12,9 @@ project:
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_vga_clock"
-  
+
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
-  source_files:        
+  source_files:
     - button_pulse.v
     - digit.v
     - fontROM.v

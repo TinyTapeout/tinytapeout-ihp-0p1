@@ -17,7 +17,7 @@ module tt_um_vga_clock (
     wire [1:0] G;
     wire [1:0] B;
     wire hsync, vsync;
-    
+
     wire vga_clock_pmod = ui_in[3];
     // this input switches between Tiny VGA and VGA Clock PMOD
     // https://github.com/mole99/tiny-vga
@@ -33,7 +33,7 @@ module tt_um_vga_clock (
     assign uo_out[7] = vga_clock_pmod ? R[1]  : hsync;
 
     p03_vga_clock vga_clock (
-    .clk        (clk), 
+    .clk        (clk),
     .reset_n    (rst_n),
     // inputs
     .adj_hrs    (ui_in[0]),

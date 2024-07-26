@@ -1,5 +1,5 @@
 `default_nettype none
-module p03_button_pulse 
+module p03_button_pulse
 #(
     parameter MAX_COUNT = 8,    // max wait before issue next pulse
     parameter DEC_COUNT = 2,    // every pulse, decrement comparitor by this amount

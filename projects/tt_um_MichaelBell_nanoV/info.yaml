@@ -1,0 +1,105 @@
+---
+# TinyTapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here.
+# Source files must be in ./src and you must list each source file separately
+  source_files:
+    - tt_top.v
+    - nanoV/alu.v
+    - nanoV/core.v
+    - nanoV/cpu.v
+    - nanoV/register.v
+    - nanoV/shift.v
+    - nanoV/multiply.v
+    - nanoV/uart/uart_tx.v
+    - nanoV/uart/uart_rx.v
+  top_module:  "tt_um_MichaelBell_nanoV"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation:
+  author:       "Michael Bell"      # Your name
+  title:        "Risc-V Nano V"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "RV32E bit serial processor"      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+      A minimal RV32E processor using an SPI RAM for instructions and data.
+
+      The SPI RAM and a UART are connected to the bidi IOs.  The SPI RAM is clocked at the same speed as the input clock.
+
+      The CPU has no instruction or data cache and effectively runs at clock speed / 32.  More details can be found in the [nanoV](https://github.com/MichaelBell/nanoV) repo.
+
+      Restrictions/unimplemented parts of RV32E:
+
+        - register x3/gp is hardcoded to 0x00001000 (this allows data in the low 6KB of RAM to be accessed cheaply).
+        - register x4/tp is hardcoded to 0x10000000 (this allows the GPIO and UART to be accessed cheaply)
+        - The ebreak instruction (and interrupts in general) are not implemented.
+
+      The gp and tp registers are not written to by normal programs compiled by gcc, so the regular build of gcc can be used to build programs.
+
+      The inputs and outputs are for general purpose use from the CPU, the outputs can be written at address 0x10000000, and inputs read at 0x10000004.
+
+      The UART runs at clock speed / 128 (e.g. 93750 baud with a 12MHz clock).  Bytes can be written or read at address 0x10000010.
+      The UART provides 2 bits of status at address 0x10000014:
+
+        - Bit 1: Received data waiting
+        - Bit 0: Data transmit in progress
+
+      There are no transmit or receive FIFOs, before a program sends a byte it should check bit 0 is low before writing.  The peripheral library in [nanoV-sdk](https://github.com/MichaelBell/nanoV-sdk) does this.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Attach an SPI RAM or use the [RP2040 emulated SPI RAM](https://github.com/MichaelBell/spi-ram-emu) and build prorgams using the nanoV-sdk, found in the [nanoV-sdk](https://github.com/MichaelBell/nanoV-sdk) repo.
+
+      The SPI RAM outputs are disabled when Reset is asserted, allowing the RAM to be reprogrammed easily.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:
+    - General purpose input 0
+    - General purpose input 1
+    - General purpose input 2
+    - General purpose input 3
+    - General purpose input 4
+    - General purpose input 5
+    - General purpose input 6
+    - General purpose input 7
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - segment a / GP output 0
+    - segment b / GP output 1
+    - segment c / GP output 2
+    - segment d / GP output 3
+    - segment e / GP output 4
+    - segment f / GP output 5
+    - segment g / GP output 6
+    - dot / GP output 7
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - SPI RAM MOSI
+    - SPI RAM CSn
+    - SPI RAM SCK
+    - SPI RAM MISO
+    - UART RX
+    - UART TX
+    - UART RTS
+    - SPI RAM ~Hold
+
+# The following fields are optional
+  tag:          "riscv"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "rebelmike"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository
