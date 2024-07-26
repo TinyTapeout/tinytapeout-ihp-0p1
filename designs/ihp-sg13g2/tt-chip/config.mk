@@ -3,46 +3,39 @@ export DESIGN_NAME = tt_top
 export PLATFORM    = ihp-sg13g2
 export PROJECTS_HOME = $(DESIGN_HOME)/../projects
 
+export ENABLE_PROJECT_00 = 1
+export ENABLE_PROJECT_01 = 1
+export ENABLE_PROJECT_02 = 1
+export ENABLE_PROJECT_03 = 1
+export ENABLE_PROJECT_04 = 0
+export ENABLE_PROJECT_05 = 0
+export ENABLE_PROJECT_06 = 0
+export ENABLE_PROJECT_07 = 0
+export ENABLE_PROJECT_08 = 0
+export ENABLE_PROJECT_09 = 0
+export ENABLE_PROJECT_10 = 0
+export ENABLE_PROJECT_11 = 0
+export ENABLE_PROJECT_12 = 0
+export ENABLE_PROJECT_13 = 0
+export ENABLE_PROJECT_14 = 0
+export ENABLE_PROJECT_15 = 0
+export ENABLE_PROJECT_16 = 0
+export ENABLE_PROJECT_17 = 0
+export ENABLE_PROJECT_18 = 0
+export ENABLE_PROJECT_19 = 0
+export ENABLE_PROJECT_20 = 0
+export ENABLE_PROJECT_21 = 0
+export ENABLE_PROJECT_22 = 0
+export ENABLE_PROJECT_23 = 0
+
 export SEAL_GDS = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/gds/sealring.gds
 
 export VERILOG_FILES = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_top.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/counter.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/basic_mux.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_logo.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p00_wrapper.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p01_wrapper.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p02_wrapper.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p03_wrapper.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p04_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p05_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p06_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p07_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p08_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p09_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p10_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p11_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p12_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p13_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p14_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p15_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p16_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p17_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p18_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p19_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p20_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p21_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p22_wrapper_skip.v \
-                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p23_wrapper_skip.v \
-                       $(PROJECTS_HOME)/tt_um_chip_rom/src/tt_um_chip_rom.v \
-                       $(PROJECTS_HOME)/tt_um_factory_test/src/tt_um_factory_test.v \
-                       $(PROJECTS_HOME)/tt_um_urish_simon/src/simon.v \
-                       $(PROJECTS_HOME)/tt_um_urish_simon/src/project.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/src/button_pulse.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/src/digit.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/src/fontROM.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/src/tt_vga_clock.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/src/vga_clock.v \
-                       $(PROJECTS_HOME)/tt_um_vga_clock/src/VgaSyncGen.v
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_logo.v
+
+include $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/projects.mk
 
 export SDC_FILE      = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
 
