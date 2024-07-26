@@ -27,6 +27,7 @@ export ENABLE_PROJECT_20 = 0
 export ENABLE_PROJECT_21 = 0
 export ENABLE_PROJECT_22 = 0
 export ENABLE_PROJECT_23 = 0
+export ENABLE_TT_LOGO = 0
 
 export SEAL_GDS = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/gds/sealring.gds
 
@@ -66,3 +67,12 @@ export CDL_FILE = \
     $(IHP_PDK_ROOT)/ihp-sg13g2/libs.ref/sg13g2_stdcell/cdl/sg13g2_stdcell.cdl \
     $(IHP_PDK_ROOT)/ihp-sg13g2/libs.ref/sg13g2_io/cdl/sg13g2_io.cdl \
     $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/bondpad/cdl/bondpad_70x70.cdl
+
+ifeq ($(ENABLE_TT_LOGO), 1)
+    export ADDITIONAL_LEFS += \
+        $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/tt_logo/lef/tt_logo.lef
+    export ADDITIONAL_GDS += \
+        $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/tt_logo/gds/tt_logo.gds.gz
+    export MACRO_PLACEMENT = \
+        $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macro_placement.cfg
+endif
