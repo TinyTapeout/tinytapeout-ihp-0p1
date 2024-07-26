@@ -179,6 +179,9 @@ module tt_top (
       .pad({loopback_out_PAD})
   );
 
+  (* keep *)
+  tt_logo tt_logo_I ();
+
   wire [4:0] addr;
 
   counter counter_I (

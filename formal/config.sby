@@ -9,16 +9,20 @@ smtbmc
 
 [script]
 read -noverific
-read -sv sg13g2_io.v tt_top.v basic_mux.v counter.v p_wrappers.v tt_um_formal.v tt_top_formal.v
+read -sv sg13g2_io.v tt_top.v basic_mux.v counter.v tt_logo.v p_wrappers.v tt_um_formal.v tt_top_formal.v
 
 # convert tribuf to logic
 prep -top tt_top_formal; flatten ; tribuf -formal
+
+# ignore tt logo
+cutpoint tt_top_formal/tt_top.tt_logo_I
 
 [files]
 ../IHP-Open-PDK/ihp-sg13g2/libs.ref/sg13g2_io/verilog/sg13g2_io.v
 ../designs/src/tt-chip/tt_top.v
 ../designs/src/tt-chip/basic_mux.v
 ../designs/src/tt-chip/counter.v
+../designs/src/tt-chip/tt_logo.v
 p_wrappers.v
 tt_um_formal.v
 tt_top_formal.v

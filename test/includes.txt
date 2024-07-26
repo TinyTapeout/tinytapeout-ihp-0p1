@@ -1,6 +1,7 @@
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_top.v
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/counter.v
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/basic_mux.v
+-v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_logo.v
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p00_wrapper.v
 -v $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p01_wrapper.v
 -v $(PROJECTS_HOME)/tt_um_chip_rom/src/tt_um_chip_rom.v
