@@ -6,7 +6,7 @@
  **                                                                          **
  *****************************************************************************/
 
-module p22_DIVUNIT( A,
+module p08_DIVUNIT( A,
                 B,
                 C,
                 S,
@@ -59,7 +59,7 @@ module p22_DIVUNIT( A,
    /*******************************************************************************
    ** Here all normal components are defined                                     **
    *******************************************************************************/
-   p22_Multiplexer_2   PLEXERS_1 (.enable(1'b1),
+   p08_Multiplexer_2   PLEXERS_1 (.enable(1'b1),
                               .muxIn_0(s_logisimNet1),
                               .muxIn_1(s_logisimNet2),
                               .muxOut(s_logisimNet3),
@@ -70,7 +70,7 @@ module p22_DIVUNIT( A,
    ** Here all sub-circuits are defined                                          **
    *******************************************************************************/
 
-   p22_FA   FA_DU (.A(s_logisimNet1),
+   p08_FA   FA_DU (.A(s_logisimNet1),
                .B(s_logisimNet4),
                .C(s_logisimNet6),
                .S(s_logisimNet2),

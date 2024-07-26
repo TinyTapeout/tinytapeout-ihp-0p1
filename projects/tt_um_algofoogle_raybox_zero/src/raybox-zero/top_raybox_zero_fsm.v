@@ -6,7 +6,7 @@
 // https://github.com/algofoogle/journal/blob/master/0182-2023-12-03.md#test-6
 
 
-module p08_top_raybox_zero_fsm(
+module p22_top_raybox_zero_fsm(
 `ifdef USE_POWER_PINS
     inout vdd,
     inout vss,
@@ -74,18 +74,18 @@ module p08_top_raybox_zero_fsm(
     // wire reset_alt;
 `ifdef REG_LA_INS
     // These are registered versions of i_gpout*_sel (2 cycle delay):
-    p08_stable_sync gpo0sel0R (i_clk, i_gpout0_sel[0], gpout0_sel[0]);
-    p08_stable_sync gpo0sel1R (i_clk, i_gpout0_sel[1], gpout0_sel[1]);
-    p08_stable_sync gpo0sel2R (i_clk, i_gpout0_sel[2], gpout0_sel[2]);
-    p08_stable_sync gpo0sel3R (i_clk, i_gpout0_sel[3], gpout0_sel[3]);
-    p08_stable_sync gpo1sel0R (i_clk, i_gpout1_sel[0], gpout1_sel[0]);
-    p08_stable_sync gpo1sel1R (i_clk, i_gpout1_sel[1], gpout1_sel[1]);
-    p08_stable_sync gpo1sel2R (i_clk, i_gpout1_sel[2], gpout1_sel[2]);
-    p08_stable_sync gpo1sel3R (i_clk, i_gpout1_sel[3], gpout1_sel[3]);
-    p08_stable_sync gpo2sel0R (i_clk, i_gpout2_sel[0], gpout2_sel[0]);
-    p08_stable_sync gpo2sel1R (i_clk, i_gpout2_sel[1], gpout2_sel[1]);
-    p08_stable_sync gpo2sel2R (i_clk, i_gpout2_sel[2], gpout2_sel[2]);
-    p08_stable_sync gpo2sel3R (i_clk, i_gpout2_sel[3], gpout2_sel[3]);
+    p22_stable_sync gpo0sel0R (i_clk, i_gpout0_sel[0], gpout0_sel[0]);
+    p22_stable_sync gpo0sel1R (i_clk, i_gpout0_sel[1], gpout0_sel[1]);
+    p22_stable_sync gpo0sel2R (i_clk, i_gpout0_sel[2], gpout0_sel[2]);
+    p22_stable_sync gpo0sel3R (i_clk, i_gpout0_sel[3], gpout0_sel[3]);
+    p22_stable_sync gpo1sel0R (i_clk, i_gpout1_sel[0], gpout1_sel[0]);
+    p22_stable_sync gpo1sel1R (i_clk, i_gpout1_sel[1], gpout1_sel[1]);
+    p22_stable_sync gpo1sel2R (i_clk, i_gpout1_sel[2], gpout1_sel[2]);
+    p22_stable_sync gpo1sel3R (i_clk, i_gpout1_sel[3], gpout1_sel[3]);
+    p22_stable_sync gpo2sel0R (i_clk, i_gpout2_sel[0], gpout2_sel[0]);
+    p22_stable_sync gpo2sel1R (i_clk, i_gpout2_sel[1], gpout2_sel[1]);
+    p22_stable_sync gpo2sel2R (i_clk, i_gpout2_sel[2], gpout2_sel[2]);
+    p22_stable_sync gpo2sel3R (i_clk, i_gpout2_sel[3], gpout2_sel[3]);
     // // Registered version of i_reset_alt (2 cycle delay):
     // stable_sync reset_altR (i_clk, i_reset_alt, reset_alt);
 `else
@@ -133,7 +133,7 @@ module p08_top_raybox_zero_fsm(
     wire rbzero_clk = i_clk;
 
     //SMELL: 'generate' these 3 instead, since they're pretty consistent...
-    p08_gpout_mux gpout0(
+    p22_gpout_mux gpout0(
         //  Primary: HBLANK     Alt: hmax
         .sel(gpout0_sel), .gpout(unreg_gpout[0]), .primary(hblank), .alt(hmax),
             .clk(i_clk), .reset(rbzero_reset),
@@ -143,7 +143,7 @@ module p08_top_raybox_zero_fsm(
             .tex_oeb0(o_tex_oeb0), .tex_in(i_tex_in),
             .vinf(vinf)
     );
-    p08_gpout_mux gpout1(
+    p22_gpout_mux gpout1(
         //  Primary: VBLANK     Alt: vmax
         .sel(gpout1_sel), .gpout(unreg_gpout[1]), .primary(vblank), .alt(vmax),
             .clk(i_clk), .reset(rbzero_reset),
@@ -157,7 +157,7 @@ module p08_top_raybox_zero_fsm(
     // - Ability to compare with registered equivalents above.
     // - Direct access to clk.
     // - Direct access to rbzero_reset.
-    p08_gpout_mux gpout2(
+    p22_gpout_mux gpout2(
         //  Primary: rbzero_reset    Alt: i_clk
         .sel(gpout2_sel), .gpout(unreg_gpout[2]), .primary(rbzero_reset), .alt(i_clk),
             .clk(i_clk), .reset(rbzero_reset),
@@ -179,7 +179,7 @@ module p08_top_raybox_zero_fsm(
     wire [9:0] hpos, vpos;
     wire vinf;
 
-    p08_rbzero rbzero(
+    p22_rbzero rbzero(
         .clk        (rbzero_clk),
         .reset      (rbzero_reset),
         // SPI peripheral interface for updating vectors:
@@ -219,7 +219,7 @@ module p08_top_raybox_zero_fsm(
 endmodule
 
 
-module p08_gpout_mux(
+module p22_gpout_mux(
     input   wire            clk,        // Used for the clk OUTPUT options.
     input   wire            reset,      // Used to clear the clk divider register.
     input   wire    [3:0]   sel,        // Which of 16 inputs is the one we'll output via gpout?
@@ -265,7 +265,7 @@ module p08_gpout_mux(
 endmodule
 
 // Metastability avoidance; chained DFFs:
-module p08_stable_sync #(
+module p22_stable_sync #(
   parameter DEPTH=2
 ) (
   input clk,

@@ -3,7 +3,7 @@
 
 // `include "fixed_point_params.v"
 
-module p08_debug_overlay #(
+module p22_debug_overlay #(
   parameter H_VIEW = 640,
   parameter DEBUG_SCALE = 3 // Power of 2 scaling for debug overlay.
 ) (

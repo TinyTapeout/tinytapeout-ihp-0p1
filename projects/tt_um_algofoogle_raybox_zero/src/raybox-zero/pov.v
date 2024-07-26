@@ -5,7 +5,7 @@
 // `include "helpers.v"
 
 
-module p08_pov(
+module p22_pov(
   input clk,
   input reset,
   input i_sclk, i_ss_n, i_mosi, // SPI input.

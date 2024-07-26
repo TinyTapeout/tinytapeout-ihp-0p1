@@ -76,22 +76,18 @@ endif
 
 ifeq ($(ENABLE_PROJECT_08), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p08_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/project.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/fixed_point_params.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/helpers.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/rbzero.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/spi_registers.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/debug_overlay.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/map_overlay.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/map_rom.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/pov.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/lzc.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/reciprocal.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/wall_tracer.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/row_render.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/vga_mux.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/vga_sync.v \
-                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/top_raybox_zero_fsm.v
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/AND_GATE.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/AND_GATE_4_INPUTS.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/DIVUNIT.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/FA.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/HA.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/Multiplexer_2.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/NAND_GATE.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/OR_GATE.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/XOR_GATE_ONEHOT.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/div4.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/mul4.v \
+                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/top_tt_um_dlmiles_muldiv4.v
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p08_wrapper_skip.v
 endif
@@ -270,18 +266,22 @@ endif
 
 ifeq ($(ENABLE_PROJECT_22), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p22_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/AND_GATE.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/AND_GATE_4_INPUTS.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/DIVUNIT.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/FA.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/HA.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/Multiplexer_2.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/NAND_GATE.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/OR_GATE.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/XOR_GATE_ONEHOT.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/div4.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/mul4.v \
-                            $(PROJECTS_HOME)/tt_um_dlmiles_muldiv4/src/top_tt_um_dlmiles_muldiv4.v
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/project.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/fixed_point_params.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/helpers.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/rbzero.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/spi_registers.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/debug_overlay.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/map_overlay.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/map_rom.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/pov.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/lzc.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/reciprocal.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/wall_tracer.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/row_render.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/vga_mux.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/vga_sync.v \
+                            $(PROJECTS_HOME)/tt_um_algofoogle_raybox_zero/src/raybox-zero/top_raybox_zero_fsm.v
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p22_wrapper_skip.v
 endif

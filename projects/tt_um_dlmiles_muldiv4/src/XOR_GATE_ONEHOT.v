@@ -6,7 +6,7 @@
  **                                                                          **
  *****************************************************************************/
 
-module p22_XOR_GATE_ONEHOT( input1,
+module p08_XOR_GATE_ONEHOT( input1,
                         input2,
                         result );
 

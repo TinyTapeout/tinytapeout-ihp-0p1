@@ -6,7 +6,7 @@
  **                                                                          **
  *****************************************************************************/
 
-module p22_Multiplexer_2( enable,
+module p08_Multiplexer_2( enable,
                       muxIn_0,
                       muxIn_1,
                       muxOut,

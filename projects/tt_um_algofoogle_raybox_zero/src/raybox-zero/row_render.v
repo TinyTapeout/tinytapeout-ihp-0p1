@@ -1,7 +1,7 @@
 `default_nettype none
 // `timescale 1ns / 1ps
 
-module p08_row_render #(
+module p22_row_render #(
   parameter H_VIEW = 640
 ) (
   input wire  [1:0] wall, // Wall texture ID.

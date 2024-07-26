@@ -1,7 +1,7 @@
 `default_nettype none
 // `timescale 1ns / 1ps
 
-module p08_vga_sync #(
+module p22_vga_sync #(
   // 800 clocks wide:
   parameter H_VIEW        = 640,   // Visible area comes first...
   parameter H_FRONT       =  16,   // ...then HBLANK starts with H_FRONT (RHS border)...

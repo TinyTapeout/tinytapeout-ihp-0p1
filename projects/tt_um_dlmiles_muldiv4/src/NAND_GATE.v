@@ -6,7 +6,7 @@
  **                                                                          **
  *****************************************************************************/
 
-module p22_NAND_GATE( input1,
+module p08_NAND_GATE( input1,
                   input2,
                   result );
 

@@ -49,7 +49,7 @@ module tt_um_algofoogle_raybox_zero (
   wire o_tex_oeb0;
   wire [3:0] i_tex_in = {1'b0, uio_in[7:5]}; //NOTE: io[3] is unused, currently.
 
-  p08_rbzero rbzero(
+  p22_rbzero rbzero(
     .clk        (clk),
     .reset      (~rst_n),
 

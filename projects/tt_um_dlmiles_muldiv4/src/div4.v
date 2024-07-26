@@ -6,7 +6,7 @@
  **                                                                          **
  *****************************************************************************/
 
-module p22_div4( dividend,
+module p08_div4( dividend,
              divisor,
              ediv0,
              eover,
@@ -182,104 +182,104 @@ module p22_div4( dividend,
    /*******************************************************************************
    ** Here all normal components are defined                                     **
    *******************************************************************************/
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XORD0_DVR (.input1(s_logisimBus47[0]),
                  .input2(s_logisimNet11),
                  .result(s_logisimNet62));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XORD0_DVD_TWOS (.input1(s_logisimBus33[0]),
                       .input2(s_logisimNet4),
                       .result(s_logisimNet88));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XORD1_DVD_TWOS (.input1(s_logisimBus33[1]),
                       .input2(s_logisimNet4),
                       .result(s_logisimNet78));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XORD3_DVD_TWOS (.input1(s_logisimBus33[3]),
                       .input2(s_logisimNet4),
                       .result(s_logisimNet76));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XORD2_DVD_TWOS (.input1(s_logisimBus33[2]),
                       .input2(s_logisimNet4),
                       .result(s_logisimNet50));
 
-   p22_AND_GATE_4_INPUTS #(.BubblesMask(4'hF))
+   p08_AND_GATE_4_INPUTS #(.BubblesMask(4'hF))
       DIV0ERROR (.input1(s_logisimBus47[3]),
                  .input2(s_logisimBus47[2]),
                  .input3(s_logisimBus47[1]),
                  .input4(s_logisimBus47[0]),
                  .result(s_logisimNet43));
 
-   p22_AND_GATE #(.BubblesMask(2'b00))
+   p08_AND_GATE #(.BubblesMask(2'b00))
       DVD_TWOS_EN (.input1(s_logisimBus33[3]),
                    .input2(s_logisimNet74),
                    .result(s_logisimNet4));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XORD1_DVR (.input1(s_logisimBus47[1]),
                  .input2(s_logisimNet11),
                  .result(s_logisimNet10));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XORD2_DVR (.input1(s_logisimBus47[2]),
                  .input2(s_logisimNet11),
                  .result(s_logisimNet13));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XORD3_DVR (.input1(s_logisimBus47[3]),
                  .input2(s_logisimNet11),
                  .result(s_logisimNet3));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       GATES_11 (.input1(s_logisimNet4),
                 .input2(s_logisimNet53),
                 .result(s_logisimNet65));
 
-   p22_AND_GATE #(.BubblesMask(2'b00))
+   p08_AND_GATE #(.BubblesMask(2'b00))
       DVR_TWOS_EN (.input1(s_logisimNet74),
                    .input2(s_logisimBus47[3]),
                    .result(s_logisimNet53));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XOR_R3_SIGN (.input1(s_logisimNet27),
                    .input2(s_logisimNet4),
                    .result(s_logisimNet21));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XOR_R1_SIGN (.input1(s_logisimNet29),
                    .input2(s_logisimNet4),
                    .result(s_logisimNet25));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XOR_R2_SIGN (.input1(s_logisimNet56),
                    .input2(s_logisimNet4),
                    .result(s_logisimNet51));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XOR_R0_SIGN (.input1(s_logisimNet61),
                    .input2(s_logisimNet4),
                    .result(s_logisimNet60));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XOR_Q0_SIGN (.input1(s_logisimBus54[0]),
                    .input2(s_logisimNet65),
                    .result(s_logisimNet84));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XOR_Q2_SIGN (.input1(s_logisimBus54[2]),
                    .input2(s_logisimNet65),
                    .result(s_logisimNet14));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XOR_Q3_SIGN (.input1(s_logisimBus54[3]),
                    .input2(s_logisimNet65),
                    .result(s_logisimNet63));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       XOR_Q1_SIGN (.input1(s_logisimBus54[1]),
                    .input2(s_logisimNet65),
                    .result(s_logisimNet66));
@@ -289,188 +289,188 @@ module p22_div4( dividend,
    ** Here all sub-circuits are defined                                          **
    *******************************************************************************/
 
-   p22_DIVUNIT   DUQ0D0d0 (.A(s_logisimNet73),
+   p08_DIVUNIT   DUQ0D0d0 (.A(s_logisimNet73),
                        .B(s_logisimNet62),
                        .C(s_logisimNet91),
                        .S(s_logisimNet61),
                        .SEL(s_logisimBus54[0]),
                        .Y(s_logisimNet11));
 
-   p22_DIVUNIT   DUQ0D0d1 (.A(s_logisimNet15),
+   p08_DIVUNIT   DUQ0D0d1 (.A(s_logisimNet15),
                        .B(s_logisimNet10),
                        .C(s_logisimNet24),
                        .S(s_logisimNet29),
                        .SEL(s_logisimBus54[0]),
                        .Y(s_logisimNet91));
 
-   p22_DIVUNIT   DUQ1D1d2 (.A(s_logisimNet8),
+   p08_DIVUNIT   DUQ1D1d2 (.A(s_logisimNet8),
                        .B(s_logisimNet13),
                        .C(s_logisimNet16),
                        .S(s_logisimNet17),
                        .SEL(s_logisimBus54[1]),
                        .Y(s_logisimNet48));
 
-   p22_DIVUNIT   DUQ1D1d3 (.A(s_logisimNet42),
+   p08_DIVUNIT   DUQ1D1d3 (.A(s_logisimNet42),
                        .B(s_logisimNet3),
                        .C(s_logisimNet38),
                        .S(s_logisimNet6),
                        .SEL(s_logisimBus54[1]),
                        .Y(s_logisimNet16));
 
-   p22_DIVUNIT   DUQ1D1d0 (.A(s_logisimNet79),
+   p08_DIVUNIT   DUQ1D1d0 (.A(s_logisimNet79),
                        .B(s_logisimNet62),
                        .C(s_logisimNet80),
                        .S(s_logisimNet15),
                        .SEL(s_logisimBus54[1]),
                        .Y(s_logisimNet11));
 
-   p22_DIVUNIT   DUQ0D0d2 (.A(s_logisimNet81),
+   p08_DIVUNIT   DUQ0D0d2 (.A(s_logisimNet81),
                        .B(s_logisimNet13),
                        .C(s_logisimNet90),
                        .S(s_logisimNet56),
                        .SEL(s_logisimBus54[0]),
                        .Y(s_logisimNet24));
 
-   p22_DIVUNIT   DUQ3D3d01 (.A(s_logisimNet98),
+   p08_DIVUNIT   DUQ3D3d01 (.A(s_logisimNet98),
                         .B(s_logisimNet10),
                         .C(s_logisimNet77),
                         .S(s_logisimNet40),
                         .SEL(s_logisimBus54[3]),
                         .Y(s_logisimNet68));
 
-   p22_DIVUNIT   DUQ1D1d4_EXT (.A(s_logisimNet1),
+   p08_DIVUNIT   DUQ1D1d4_EXT (.A(s_logisimNet1),
                            .B(s_logisimNet83),
                            .C(s_logisimBus54[1]),
                            .S(s_logisimNet35),
                            .SEL(s_logisimBus54[1]),
                            .Y(s_logisimNet38));
 
-   p22_DIVUNIT   DUQ2D2d2 (.A(s_logisimNet40),
+   p08_DIVUNIT   DUQ2D2d2 (.A(s_logisimNet40),
                        .B(s_logisimNet13),
                        .C(s_logisimNet37),
                        .S(s_logisimNet42),
                        .SEL(s_logisimBus54[2]),
                        .Y(s_logisimNet57));
 
-   p22_DIVUNIT   DUQ1D1d1 (.A(s_logisimNet46),
+   p08_DIVUNIT   DUQ1D1d1 (.A(s_logisimNet46),
                        .B(s_logisimNet10),
                        .C(s_logisimNet48),
                        .S(s_logisimNet81),
                        .SEL(s_logisimBus54[1]),
                        .Y(s_logisimNet80));
 
-   p22_DIVUNIT   DUQ0D0d4_EXT (.A(s_logisimNet6),
+   p08_DIVUNIT   DUQ0D0d4_EXT (.A(s_logisimNet6),
                            .B(s_logisimNet94),
                            .C(s_logisimBus54[0]),
                            .S(s_logisimNet99),
                            .SEL(s_logisimBus54[0]),
                            .Y(s_logisimNet5));
 
-   p22_DIVUNIT   DUQ3D3d0 (.A(s_logisimNet49),
+   p08_DIVUNIT   DUQ3D3d0 (.A(s_logisimNet49),
                        .B(s_logisimNet62),
                        .C(s_logisimNet68),
                        .S(s_logisimNet32),
                        .SEL(s_logisimBus54[3]),
                        .Y(s_logisimNet11));
 
-   p22_DIVUNIT   DUQ3D3d3 (.A(s_logisimNet97),
+   p08_DIVUNIT   DUQ3D3d3 (.A(s_logisimNet97),
                        .B(s_logisimNet3),
                        .C(s_logisimBus54[3]),
                        .S(s_logisimNet71),
                        .SEL(s_logisimBus54[3]),
                        .Y(s_logisimNet67));
 
-   p22_DIVUNIT   DUQ2D2d0 (.A(s_logisimNet23),
+   p08_DIVUNIT   DUQ2D2d0 (.A(s_logisimNet23),
                        .B(s_logisimNet62),
                        .C(s_logisimNet36),
                        .S(s_logisimNet46),
                        .SEL(s_logisimBus54[2]),
                        .Y(s_logisimNet11));
 
-   p22_DIVUNIT   DUQ2D2d1 (.A(s_logisimNet32),
+   p08_DIVUNIT   DUQ2D2d1 (.A(s_logisimNet32),
                        .B(s_logisimNet10),
                        .C(s_logisimNet57),
                        .S(s_logisimNet8),
                        .SEL(s_logisimBus54[2]),
                        .Y(s_logisimNet36));
 
-   p22_DIVUNIT   DUQ3D3d2 (.A(s_logisimNet82),
+   p08_DIVUNIT   DUQ3D3d2 (.A(s_logisimNet82),
                        .B(s_logisimNet13),
                        .C(s_logisimNet67),
                        .S(s_logisimNet72),
                        .SEL(s_logisimBus54[3]),
                        .Y(s_logisimNet77));
 
-   p22_DIVUNIT   DUQ0D0d3 (.A(s_logisimNet17),
+   p08_DIVUNIT   DUQ0D0d3 (.A(s_logisimNet17),
                        .B(s_logisimNet3),
                        .C(s_logisimNet5),
                        .S(s_logisimNet27),
                        .SEL(s_logisimBus54[0]),
                        .Y(s_logisimNet90));
 
-   p22_DIVUNIT   DUQ2D2d3 (.A(s_logisimNet72),
+   p08_DIVUNIT   DUQ2D2d3 (.A(s_logisimNet72),
                        .B(s_logisimNet3),
                        .C(s_logisimBus54[2]),
                        .S(s_logisimNet1),
                        .SEL(s_logisimBus54[2]),
                        .Y(s_logisimNet37));
 
-   p22_HA   HAD2_DVD_TWOS (.A(s_logisimNet50),
+   p08_HA   HAD2_DVD_TWOS (.A(s_logisimNet50),
                        .B(s_logisimNet75),
                        .C(s_logisimNet45),
                        .S(s_logisimNet23));
 
-   p22_HA   HAD0_DVD_TWOS (.A(s_logisimNet88),
+   p08_HA   HAD0_DVD_TWOS (.A(s_logisimNet88),
                        .B(s_logisimNet4),
                        .C(s_logisimNet92),
                        .S(s_logisimNet73));
 
-   p22_HA   HAD1_DVD_TWOS (.A(s_logisimNet78),
+   p08_HA   HAD1_DVD_TWOS (.A(s_logisimNet78),
                        .B(s_logisimNet92),
                        .C(s_logisimNet75),
                        .S(s_logisimNet79));
 
-   p22_HA   HAD3_DVD_TWOS (.A(s_logisimNet76),
+   p08_HA   HAD3_DVD_TWOS (.A(s_logisimNet76),
                        .B(s_logisimNet45),
                        .C(s_logisimNet96),
                        .S(s_logisimNet49));
 
-   p22_HA   HAR3_SIGN (.A(s_logisimNet21),
+   p08_HA   HAR3_SIGN (.A(s_logisimNet21),
                    .B(s_logisimNet55),
                    .C(s_logisimNet58),
                    .S(s_logisimBus70[3]));
 
-   p22_HA   HAR1_SIGN (.A(s_logisimNet25),
+   p08_HA   HAR1_SIGN (.A(s_logisimNet25),
                    .B(s_logisimNet52),
                    .C(s_logisimNet19),
                    .S(s_logisimBus70[1]));
 
-   p22_HA   HAR0_SIGN (.A(s_logisimNet60),
+   p08_HA   HAR0_SIGN (.A(s_logisimNet60),
                    .B(s_logisimNet4),
                    .C(s_logisimNet52),
                    .S(s_logisimBus70[0]));
 
-   p22_HA   HAR2_SIGN (.A(s_logisimNet51),
+   p08_HA   HAR2_SIGN (.A(s_logisimNet51),
                    .B(s_logisimNet19),
                    .C(s_logisimNet55),
                    .S(s_logisimBus70[2]));
 
-   p22_HA   HAQ1_SIGN (.A(s_logisimNet66),
+   p08_HA   HAQ1_SIGN (.A(s_logisimNet66),
                    .B(s_logisimNet85),
                    .C(s_logisimNet64),
                    .S(s_logisimBus30[1]));
 
-   p22_HA   HAQ0_SIGN (.A(s_logisimNet84),
+   p08_HA   HAQ0_SIGN (.A(s_logisimNet84),
                    .B(s_logisimNet65),
                    .C(s_logisimNet85),
                    .S(s_logisimBus30[0]));
 
-   p22_HA   HAQ3_SIGN (.A(s_logisimNet63),
+   p08_HA   HAQ3_SIGN (.A(s_logisimNet63),
                    .B(s_logisimNet0),
                    .C(s_logisimNet95),
                    .S(s_logisimBus30[3]));
 
-   p22_HA   HAQ2_SIGN (.A(s_logisimNet14),
+   p08_HA   HAQ2_SIGN (.A(s_logisimNet14),
                    .B(s_logisimNet64),
                    .C(s_logisimNet0),
                    .S(s_logisimBus30[2]));

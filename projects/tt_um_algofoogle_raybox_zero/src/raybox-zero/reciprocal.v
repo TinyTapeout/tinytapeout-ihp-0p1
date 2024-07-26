@@ -12,7 +12,7 @@
 
 // Sequential reciprocal 'device' that can be loaded, started,
 // and will provide a registered result when ready.
-module p08_reciprocal_fsm #(
+module p22_reciprocal_fsm #(
   parameter [4:0] M = 12,         // Integer bits, inc. sign.
   parameter       N = 12          // Fractional bits.
 ) (
@@ -33,7 +33,7 @@ module p08_reciprocal_fsm #(
   reg [2:0] state;
   localparam [2:0] IDLE=0, WS1=1, WS2=2, WS3=3, DONE=4;
 
-  p08_reciprocal #(.M(M),.N(N)) rcp (
+  p22_reciprocal #(.M(M),.N(N)) rcp (
     .i_data (operand),
     .i_abs  (i_abs),
     .o_data (result),
@@ -72,7 +72,7 @@ module p08_reciprocal_fsm #(
 endmodule
 
 
-module p08_reciprocal #(
+module p22_reciprocal #(
   parameter [4:0] M = 12,         // Integer bits, inc. sign.
   parameter       N = 12          // Fractional bits.
 )(
@@ -133,7 +133,7 @@ module p08_reciprocal #(
 
   assign unsigned_data = sign ? (~i_data + 1'b1) : i_data;
 
-  p08_lzc lzc(.i_data(unsigned_data), .o_lzc(lzc_cnt));
+  p22_lzc lzc(.i_data(unsigned_data), .o_lzc(lzc_cnt));
 
   assign rescale_lzc = $signed(M) - $signed(lzc_cnt); //SMELL: rescale_lzc and lzc_cnt are both 7 bits; could there be a sign problem??
 

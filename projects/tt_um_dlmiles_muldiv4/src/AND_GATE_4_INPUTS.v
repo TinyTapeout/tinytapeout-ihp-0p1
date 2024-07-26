@@ -6,7 +6,7 @@
  **                                                                          **
  *****************************************************************************/
 
-module p22_AND_GATE_4_INPUTS( input1,
+module p08_AND_GATE_4_INPUTS( input1,
                           input2,
                           input3,
                           input4,

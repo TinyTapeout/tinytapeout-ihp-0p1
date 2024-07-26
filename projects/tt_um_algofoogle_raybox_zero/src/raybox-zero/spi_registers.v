@@ -6,7 +6,7 @@
 // Well this is a funky SPI module! I'm sure there's a better way to do this...
 // Should it really be storing registers itself?
 
-module p08_spi_registers(
+module p22_spi_registers(
   input               clk,
   input               reset,
   input               i_sclk, i_ss_n, i_mosi, // SPI input.

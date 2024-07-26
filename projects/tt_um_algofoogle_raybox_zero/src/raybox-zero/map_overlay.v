@@ -7,7 +7,7 @@
 // of free tracing time, in which case we'll just make sure the FSM runs when we're out of
 // the 'in_map_overlay' screen region.
 
-module p08_map_overlay #(
+module p22_map_overlay #(
   // parameter H_VIEW = 640,
   parameter MAP_WBITS = 4,
   parameter MAP_HBITS = 4,

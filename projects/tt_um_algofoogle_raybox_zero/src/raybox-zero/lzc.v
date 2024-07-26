@@ -18,7 +18,7 @@
 `define D24 // 24-bit range, e.g. Q12.12
 `define D30 // 30-bit range, e.g. Q15.15, mostly for testing.
 
-module p08_lzc(
+module p22_lzc(
   input `INRANGE i_data,
   output [4:0] o_lzc      // 0..20 (or rather 0..`Qm+`Qn) is normal.
 );

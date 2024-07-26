@@ -1,7 +1,7 @@
 `default_nettype none
 // `timescale 1ns / 1ps
 
-module p08_vga_mux(
+module p22_vga_mux(
   input         visible,
 
 `ifdef TRACE_STATE_DEBUG

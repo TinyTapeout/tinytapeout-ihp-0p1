@@ -1,7 +1,7 @@
 `default_nettype none
 // `timescale 1ns / 1ps
 
-module p08_map_rom #(
+module p22_map_rom #(
   parameter MAP_WBITS   = 4,
   parameter MAP_HBITS   = 4
 ) (

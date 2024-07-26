@@ -72,7 +72,7 @@ module tt_um_dlmiles_muldiv4 (
     assign div_divend = ui_in[WIDTH-1 -: WIDTH];
     assign div_divsor = ui_in[DWIDTH-1 -: WIDTH];
 
-    p22_mul4 #(
+    p08_mul4 #(
         //.WIDTH     (WIDTH)
     ) mul4 (
         .opsigned  (ctl_signed),
@@ -81,7 +81,7 @@ module tt_um_dlmiles_muldiv4 (
         .p         (mul_p)
     );
 
-    p22_div4 #(
+    p08_div4 #(
         //.WIDTH     (WIDTH)
     ) div4 (
         .opsigned  (ctl_signed),

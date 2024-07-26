@@ -6,7 +6,7 @@
  **                                                                          **
  *****************************************************************************/
 
-module p22_HA( A,
+module p08_HA( A,
            B,
            C,
            S );
@@ -50,12 +50,12 @@ module p22_HA( A,
    /*******************************************************************************
    ** Here all normal components are defined                                     **
    *******************************************************************************/
-   p22_AND_GATE #(.BubblesMask(2'b00))
+   p08_AND_GATE #(.BubblesMask(2'b00))
       GATES_1 (.input1(s_logisimNet2),
                .input2(s_logisimNet0),
                .result(s_logisimNet1));
 
-   p22_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
+   p08_XOR_GATE_ONEHOT #(.BubblesMask(2'b00))
       GATES_2 (.input1(s_logisimNet0),
                .input2(s_logisimNet2),
                .result(s_logisimNet3));

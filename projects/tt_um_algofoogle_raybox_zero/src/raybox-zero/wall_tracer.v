@@ -22,7 +22,7 @@
 // could try using Verilator to set random states to try and test possible 'bad startup' conditions.
 
 
-module p08_wall_tracer #(
+module p22_wall_tracer #(
   parameter MAP_WBITS     = 4,
   parameter MAP_HBITS     = 4,
   parameter HALF_SIZE     = 320   // Half the visible screen width.
@@ -236,7 +236,7 @@ module p08_wall_tracer #(
   // wire [10:0] size = rcp_out[2:-8];
   reg `F size_full;
   wire [10:0] size = size_full[2:-8];
-  p08_reciprocal_fsm #(.M(`Qm),.N(`Qn)) rcp_fsm (
+  p22_reciprocal_fsm #(.M(`Qm),.N(`Qn)) rcp_fsm (
     .i_clk    (clk),
     .i_reset  (do_reset), //@@@: SMELL: Should this be do_reset or just reset?
     .i_start  (rcp_start),

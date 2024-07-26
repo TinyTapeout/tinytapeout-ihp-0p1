@@ -11,7 +11,7 @@
 //`define STANDBY_RESET // If defined use extra logic to avoid clocking regs during reset (for power saving/stability).
 
 
-module p08_rbzero(
+module p22_rbzero(
   input               clk,
   input               reset,
   // SPI slave for updating vectors:
@@ -78,7 +78,7 @@ module p08_rbzero(
   // wire [9:0] vpos;
   wire hmax, vmax;
   assign {o_hmax,o_vmax} = {hmax,vmax};
-  p08_vga_sync vga_sync(
+  p22_vga_sync vga_sync(
     .clk      (clk),
     .reset    (reset),
     .hsync    (hsync),
@@ -103,7 +103,7 @@ module p08_rbzero(
 
   // At vdist of 1.0, a 64p texture is stretched to 512p, hence texv is 64/512 (>>3) of int(texV).
   //NOTE: Would it be possible to do primitive texture 'filtering' using 50/50 checker dither for texxture sub-pixels?
-  p08_row_render row_render(
+  p22_row_render row_render(
     // Inputs:
     .wall     (traced_wall),
     .side     (traced_side),
@@ -267,7 +267,7 @@ module p08_rbzero(
   wire visible_frame_end = (hpos==799 && vpos==479); // The moment when SPI-loaded vector data could be used.
   assign o_hblank = hpos >= 640;
   assign o_vblank = vpos >= 480;
-  p08_pov pov(
+  p22_pov pov(
     .clk      (clk),
     .reset    (reset),
     .i_sclk   (i_sclk),
@@ -281,7 +281,7 @@ module p08_rbzero(
     .vplaneX(vplaneX), .vplaneY(vplaneY)
   );
 
-  p08_spi_registers spi_registers(
+  p22_spi_registers spi_registers(
     .clk      (clk),
     .reset    (reset),
 
@@ -324,7 +324,7 @@ module p08_rbzero(
   wire [MAP_WBITS-1:0] tracer_map_col;
   wire [MAP_HBITS-1:0] tracer_map_row;
   wire [1:0] tracer_map_val;
-  p08_map_rom #(
+  p22_map_rom #(
     .MAP_WBITS(MAP_WBITS),
     .MAP_HBITS(MAP_HBITS)
   ) map_rom (
@@ -342,7 +342,7 @@ module p08_rbzero(
   wire [MAP_WBITS-1:0] overlay_map_col;
   wire [MAP_HBITS-1:0] overlay_map_row;
   wire [1:0] overlay_map_val;
-  p08_map_rom #(
+  p22_map_rom #(
     .MAP_WBITS(MAP_WBITS),
     .MAP_HBITS(MAP_HBITS)
   ) map_rom_overlay(
@@ -353,7 +353,7 @@ module p08_rbzero(
   // --- Map overlay: ---
   wire map_en;
   wire [5:0] map_rgb;
-  p08_map_overlay #(
+  p22_map_overlay #(
     .MAP_SCALE(MAP_SCALE),
     .MAP_WBITS(MAP_WBITS),
     .MAP_HBITS(MAP_HBITS)
@@ -375,7 +375,7 @@ module p08_rbzero(
   // --- Debug overlay: ---
   wire debug_en;
   wire [5:0] debug_rgb;
-  p08_debug_overlay debug_overlay(
+  p22_debug_overlay debug_overlay(
     .hpos(hpos), .vpos(vpos),
     // View vectors:
     .playerX(playerX), .playerY(playerY),
@@ -398,7 +398,7 @@ module p08_rbzero(
   wire        side_hot;
   wire [5:0]  texu_hot;
 
-  p08_wall_tracer #(
+  p22_wall_tracer #(
     .MAP_WBITS(MAP_WBITS),
     .MAP_HBITS(MAP_HBITS),
     .HALF_SIZE(HALF_SIZE)
@@ -448,7 +448,7 @@ module p08_rbzero(
   wire [5:0] bg = hpos < HALF_SIZE
     ? color_floor   // Default is light grey for left (or bottom) side.
     : color_sky;    // Default is dark grey for right (or top) side.
-  p08_vga_mux vga_mux(
+  p22_vga_mux vga_mux(
     .visible  (visible),
 
 `ifdef USE_DEBUG_OVERLAY
