@@ -56,6 +56,286 @@ p_wrapper p_wrapper(
 
 endmodule
 
+module p04_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p05_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p06_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p07_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p08_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p09_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p10_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p11_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p12_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p13_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p14_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p15_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p16_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p17_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p18_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p19_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p20_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p21_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p22_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
+module p23_wrapper (
+  input wire ena,
+  input wire [17:0] iw,
+  output wire [23:0] ow
+);
+
+p_wrapper p_wrapper(
+    .ena(ena),
+    .iw(iw),
+    .ow(ow)
+);
+
+endmodule
+
 module p_wrapper (
   input wire ena,
   input wire [17:0] iw,

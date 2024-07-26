@@ -13,6 +13,26 @@ export VERILOG_FILES = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_top.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p01_wrapper.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p02_wrapper.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p03_wrapper.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p04_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p05_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p06_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p07_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p08_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p09_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p10_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p11_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p12_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p13_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p14_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p15_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p16_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p17_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p18_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p19_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p20_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p21_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p22_wrapper_skip.v \
+                       $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p23_wrapper_skip.v \
                        $(PROJECTS_HOME)/tt_um_chip_rom/src/tt_um_chip_rom.v \
                        $(PROJECTS_HOME)/tt_um_factory_test/src/tt_um_factory_test.v \
                        $(PROJECTS_HOME)/tt_um_urish_simon/src/simon.v \
