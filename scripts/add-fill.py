@@ -22,12 +22,12 @@ layer_map = {
 }
 fill_groups = [
     ("Activ, GatPoly & NWell", "Activ", 6, 8, [("Activ", 4), ("GatPoly", 4), ("NWell", 5)]),
-    ("Metal1 (first round)", "Metal1_L", 6, 0.5, [("Metal1", 5)]),
-    ("Metal1 (second round)", "Metal1_S", 1.5, 0.125, [("Metal1", 1.25)]),
-    ("Metal2 (first round)", "Metal2_L", 6, 0.5, [("Metal2", 5)]),
-    ("Metal2 (second round)", "Metal2_S", 1.5, 0.125, [("Metal2", 1.25)]),
-    ("Metal3 (first round)", "Metal3_L", 6, 0.5, [("Metal3", 5)]),
-    ("Metal3 (second round)", "Metal3_S", 1.5, 0.125, [("Metal3", 1.25)]),
+    ("Metal1 (first round)", "Metal1_L", 6, 0.5, [("Metal1", 4)]),
+    ("Metal1 (second round)", "Metal1_S", 1.5, 0.125, [("Metal1", 1)]),
+    ("Metal2 (first round)", "Metal2_L", 6, 0.5, [("Metal2", 4)]),
+    ("Metal2 (second round)", "Metal2_S", 1.5, 0.125, [("Metal2", 1)]),
+    ("Metal3 (first round)", "Metal3_L", 6, 0.5, [("Metal3", 4)]),
+    ("Metal3 (second round)", "Metal3_S", 1.5, 0.125, [("Metal3", 1)]),
     ("Metal4 (first round)", "Metal4_L", 6, 0.5, [("Metal4", 4)]),
     ("Metal4 (second round)", "Metal4_S", 1.5, 0.125, [("Metal4", 1)]),
     ("Metal5 (first round)", "Metal5_L", 6, 0.5, [("Metal5", 4)]),
