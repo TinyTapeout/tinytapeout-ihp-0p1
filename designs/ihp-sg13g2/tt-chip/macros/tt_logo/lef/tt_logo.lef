@@ -4,10 +4,10 @@ MACRO tt_logo
   CLASS BLOCK ;
   ORIGIN 0 0 ;
   FOREIGN tt_logo 0 0 ;
-  SIZE 256.0 BY 256.0 ;
+  SIZE 288.0 BY 288.0 ;
 
   OBS
     LAYER TopMetal2 ;
-      RECT 0 0 256.0 256.0 ;
+      RECT 0 0 288.0 288.0 ;
   END
 END tt_logo
