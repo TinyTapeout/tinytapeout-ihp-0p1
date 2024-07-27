@@ -26,7 +26,7 @@ module tt_um_urish_usb_cdc (
   assign {uio_out[5], uio_out[2]} = 0;  // tie off unused outputs
 
   /* USB Serial */
-  p11_usb_cdc #(
+  p17_usb_cdc #(
       .VENDORID              (16'h1209),
       .PRODUCTID             (16'h5454),             // https://pid.codes/1209/5454/
       .IN_BULK_MAXPACKETSIZE ('d8),

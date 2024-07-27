@@ -12,7 +12,7 @@
 //   to 8-bit parallel data for the SIE module.
 // PHY_RX module shall manage the 1.5kOhm pull-up resistor on dp line.
 
-module p11_phy_rx
+module p17_phy_rx
   #(parameter BIT_SAMPLES = 'd4)
    (
     // ---- to/from SIE module ------------------------------------

@@ -8,7 +8,7 @@
 // While OUT FIFO is not full, when OUT data is available, BULK_ENDP
 //   shall sink OUT data.
 
-module p11_bulk_endp
+module p17_bulk_endp
   #(parameter IN_BULK_MAXPACKETSIZE = 'd8,
     parameter OUT_BULK_MAXPACKETSIZE = 'd8,
     parameter BIT_SAMPLES = 'd4,
@@ -97,7 +97,7 @@ module p11_bulk_endp
       end
    endgenerate
 
-   p11_in_fifo #(.IN_MAXPACKETSIZE(IN_BULK_MAXPACKETSIZE),
+   p17_in_fifo #(.IN_MAXPACKETSIZE(IN_BULK_MAXPACKETSIZE),
              .BIT_SAMPLES(BIT_SAMPLES),
              .USE_APP_CLK(USE_APP_CLK),
              .APP_CLK_RATIO(APP_CLK_RATIO))
@@ -118,7 +118,7 @@ module p11_bulk_endp
               .out_ready_i(out_ready_i),
               .in_ready_i(in_ready_i));
 
-   p11_out_fifo #(.OUT_MAXPACKETSIZE(OUT_BULK_MAXPACKETSIZE),
+   p17_out_fifo #(.OUT_MAXPACKETSIZE(OUT_BULK_MAXPACKETSIZE),
               .BIT_SAMPLES(BIT_SAMPLES),
               .USE_APP_CLK(USE_APP_CLK),
               .APP_CLK_RATIO(APP_CLK_RATIO))

@@ -107,6 +107,6 @@ module tt_um_meriac_play_tune #( parameter MAX_COUNT = 100 ) (
     end
 
     // instantiate tune database
-    p17_meriac_tune_db meriac_tune_db(.address(note_address), .db_entry(db_entry));
+    p11_meriac_tune_db meriac_tune_db(.address(note_address), .db_entry(db_entry));
 
 endmodule

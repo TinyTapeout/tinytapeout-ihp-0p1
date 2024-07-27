@@ -14,7 +14,7 @@
 //   - USB Reset detection.
 //   - Serial-Parallel/Parallel-Serial conversion.
 
-module p11_sie
+module p17_sie
   #(parameter CTRL_MAXPACKETSIZE = 'd8,
     parameter IN_BULK_MAXPACKETSIZE = 'd8,
     parameter ENDP_CTRL = 4'd0,
@@ -549,7 +549,7 @@ module p11_sie
    assign tx_en_o = tx_en;
    assign rx_en = ~tx_en & usb_en_i;
 
-   p11_phy_rx #(.BIT_SAMPLES(BIT_SAMPLES))
+   p17_phy_rx #(.BIT_SAMPLES(BIT_SAMPLES))
    u_phy_rx (.rx_data_o(rx_data),
              .rx_valid_o(rx_valid),
              .rx_err_o(rx_err),
@@ -563,7 +563,7 @@ module p11_sie
              .dp_rx_i(dp_rx_i),
              .dn_rx_i(dn_rx_i));
 
-   p11_phy_tx #(.BIT_SAMPLES(BIT_SAMPLES))
+   p17_phy_tx #(.BIT_SAMPLES(BIT_SAMPLES))
    u_phy_tx (.tx_en_o(tx_en),
              .dp_tx_o(dp_tx_o),
              .dn_tx_o(dn_tx_o),

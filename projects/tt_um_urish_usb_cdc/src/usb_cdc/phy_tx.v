@@ -10,7 +10,7 @@
 // PHY_TX module shall convert 8-bit parallel data from the SIE
 //   module to bitstream for the USB bus physical transmitters.
 
-module p11_phy_tx
+module p17_phy_tx
   #(parameter BIT_SAMPLES = 'd4)
    (
     // ---- to USB bus physical transmitters ----------------------

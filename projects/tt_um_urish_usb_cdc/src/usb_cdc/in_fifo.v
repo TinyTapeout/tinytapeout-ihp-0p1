@@ -5,7 +5,7 @@
 // While IN FIFO is not empty, when required by in_req_i, IN_FIFO
 //   shall source IN data.
 
-module p11_in_fifo
+module p17_in_fifo
   #(parameter IN_MAXPACKETSIZE = 'd8,
     parameter BIT_SAMPLES = 'd4,
     parameter USE_APP_CLK = 0,

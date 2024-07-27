@@ -120,15 +120,8 @@ endif
 
 ifeq ($(ENABLE_PROJECT_11), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p11_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/tt_um_usb_cdc.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/bulk_endp.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/ctrl_endp.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/in_fifo.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/out_fifo.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/phy_rx.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/phy_tx.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/sie.v \
-                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/usb_cdc.v
+                            $(PROJECTS_HOME)/tt_um_meriac_play_tune/src/player.v \
+                            $(PROJECTS_HOME)/tt_um_meriac_play_tune/src/tune.v
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p11_wrapper_skip.v
 endif
@@ -192,8 +185,15 @@ endif
 
 ifeq ($(ENABLE_PROJECT_17), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p17_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_meriac_play_tune/src/player.v \
-                            $(PROJECTS_HOME)/tt_um_meriac_play_tune/src/tune.v
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/tt_um_usb_cdc.v \
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/bulk_endp.v \
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/ctrl_endp.v \
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/in_fifo.v \
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/out_fifo.v \
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/phy_rx.v \
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/phy_tx.v \
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/sie.v \
+                            $(PROJECTS_HOME)/tt_um_urish_usb_cdc/src/usb_cdc/usb_cdc.v
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p17_wrapper_skip.v
 endif

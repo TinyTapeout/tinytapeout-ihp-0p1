@@ -5,7 +5,7 @@
 //   class (or USB CDC class) and Abstract Control Model (ACM) subclass.
 // USB_CDC shall implement IN/OUT FIFO interface between USB and external APP module.
 
-module p11_usb_cdc
+module p17_usb_cdc
   #(parameter VENDORID = 16'h0000,
     parameter PRODUCTID = 16'h0000,
     parameter IN_BULK_MAXPACKETSIZE = 'd8,
@@ -96,7 +96,7 @@ module p11_usb_cdc
       end
    end
 
-   p11_sie #(.CTRL_MAXPACKETSIZE(CTRL_MAXPACKETSIZE),
+   p17_sie #(.CTRL_MAXPACKETSIZE(CTRL_MAXPACKETSIZE),
          .IN_BULK_MAXPACKETSIZE(IN_BULK_MAXPACKETSIZE),
          .ENDP_CTRL(ENDP_CTRL),
          .ENDP_BULK(ENDP_BULK),
@@ -132,7 +132,7 @@ module p11_usb_cdc
           .in_toggle_reset_i(in_toggle_reset),
           .out_toggle_reset_i(out_toggle_reset));
 
-   p11_ctrl_endp #(.VENDORID(VENDORID),
+   p17_ctrl_endp #(.VENDORID(VENDORID),
                .PRODUCTID(PRODUCTID),
                .CTRL_MAXPACKETSIZE(CTRL_MAXPACKETSIZE),
                .IN_BULK_MAXPACKETSIZE(IN_BULK_MAXPACKETSIZE),
@@ -160,7 +160,7 @@ module p11_usb_cdc
                 .out_ready_i(ctrl_out_ready),
                 .in_ready_i(ctrl_in_ready));
 
-   p11_bulk_endp #(.IN_BULK_MAXPACKETSIZE(IN_BULK_MAXPACKETSIZE),
+   p17_bulk_endp #(.IN_BULK_MAXPACKETSIZE(IN_BULK_MAXPACKETSIZE),
                .OUT_BULK_MAXPACKETSIZE(OUT_BULK_MAXPACKETSIZE),
                .BIT_SAMPLES(BIT_SAMPLES),
                .USE_APP_CLK(USE_APP_CLK),

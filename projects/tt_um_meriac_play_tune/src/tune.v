@@ -33,7 +33,7 @@
 
 */
 
-module p17_meriac_tune_db (
+module p11_meriac_tune_db (
     input wire [6:0] address,
     output reg [11:0] db_entry
 );

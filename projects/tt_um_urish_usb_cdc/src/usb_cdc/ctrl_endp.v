@@ -23,7 +23,7 @@
 `define max(a,b) ((a) > (b) ? (a) : (b))
 `define min(a,b) ((a) < (b) ? (a) : (b))
 
-module p11_ctrl_endp
+module p17_ctrl_endp
   #(parameter VENDORID = 16'h0000,
     parameter PRODUCTID = 16'h0000,
     parameter CTRL_MAXPACKETSIZE = 'd8,

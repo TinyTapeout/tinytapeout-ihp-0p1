@@ -5,7 +5,7 @@
 // While OUT FIFO is not full, when OUT data is available, OUT_FIFO
 //   shall sink OUT data.
 
-module p11_out_fifo
+module p17_out_fifo
   #(parameter OUT_MAXPACKETSIZE = 'd8,
     parameter BIT_SAMPLES = 'd4,
     parameter USE_APP_CLK = 0,
