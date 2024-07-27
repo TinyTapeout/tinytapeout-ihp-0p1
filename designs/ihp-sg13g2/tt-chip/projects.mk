@@ -95,21 +95,15 @@ endif
 
 ifeq ($(ENABLE_PROJECT_09), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p09_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/ball_painter.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/block_state.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/blocks_painter.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/border_painter.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/breakout.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/game_logic.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/lives_painter.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/paddle_painter.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/sound_gen.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/spi_ctrl.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/spi_if.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/synchronizer.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/tt_um_robojan_top.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/vga_timing.v \
-                            $(PROJECTS_HOME)/tt_um_robojan_top/src/video_mux.v
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/tt_um_top_mole99.sv \
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/top.sv \
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/sprite_access.sv \
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/sprite_data.sv \
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/sprite_movement.sv \
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/background.sv \
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/timing.sv \
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/synchronizer.sv \
+                            $(PROJECTS_HOME)/tt_um_top_mole99/src/spi_receiver.sv
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p09_wrapper_skip.v
 endif
@@ -214,15 +208,21 @@ endif
 
 ifeq ($(ENABLE_PROJECT_18), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p18_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/tt_um_top_mole99.sv \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/top.sv \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/sprite_access.sv \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/sprite_data.sv \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/sprite_movement.sv \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/background.sv \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/timing.sv \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/synchronizer.sv \
-                            $(PROJECTS_HOME)/tt_um_top_mole99/src/spi_receiver.sv
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/ball_painter.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/block_state.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/blocks_painter.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/border_painter.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/breakout.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/game_logic.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/lives_painter.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/paddle_painter.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/sound_gen.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/spi_ctrl.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/spi_if.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/synchronizer.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/tt_um_robojan_top.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/vga_timing.v \
+                            $(PROJECTS_HOME)/tt_um_robojan_top/src/video_mux.v
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p18_wrapper_skip.v
 endif

@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module p09_blocks_painter (
+module p18_blocks_painter (
     input clk,
     input nRst,
     output block_en,

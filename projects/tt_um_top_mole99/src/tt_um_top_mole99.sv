@@ -28,7 +28,7 @@ module tt_um_top_mole99 (
 
     // TODO async reset, sync deassert
 
-    p18_top top_inst (
+    p09_top top_inst (
         .clk        (clk),
         .reset_n    (rst_n),
 

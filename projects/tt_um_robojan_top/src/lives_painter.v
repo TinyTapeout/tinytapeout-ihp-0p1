@@ -1,6 +1,6 @@
 
 
-module p09_lives_painter #(
+module p18_lives_painter #(
     //                          BBGGRR
     parameter PADDLE_COLOR = 6'b111111,
     parameter PADDLE_WIDTH = 24,

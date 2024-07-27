@@ -6,7 +6,7 @@
 
 /* verilator lint_off UNUSEDSIGNAL */
 
-module p18_background #(
+module p09_background #(
     parameter HTOTAL,               // total horizontal pixel
     parameter VTOTAL                // total vertical pixel
 )(

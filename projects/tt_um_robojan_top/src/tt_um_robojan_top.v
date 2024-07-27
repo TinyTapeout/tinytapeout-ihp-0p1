@@ -36,7 +36,7 @@ module tt_um_robojan_top (
     wire miso_en;
     wire miso;
     wire sound;
-    p09_breakout breakout(
+    p18_breakout breakout(
         .clk(clk),
         .nRst(rst_n),
         .en(ena),

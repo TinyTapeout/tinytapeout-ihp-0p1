@@ -4,7 +4,7 @@
 `timescale 1ns/1ps
 `default_nettype none
 
-module p18_sprite_data #(
+module p09_sprite_data #(
     parameter WIDTH,        // width of the sprite
     parameter HEIGHT        // height of the sprite
 )(

@@ -4,7 +4,7 @@
 `timescale 1ns/1ps
 `default_nettype none
 
-module p18_sprite_movement #(
+module p09_sprite_movement #(
     parameter SPRITE_WIDTH,         // width of the sprite
     parameter SPRITE_HEIGHT,        // height of the sprite
     parameter WIDTH_SMALL,          // scaled down window width

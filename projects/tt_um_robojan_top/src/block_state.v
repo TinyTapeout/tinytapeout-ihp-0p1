@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module p09_block_state #(
+module p18_block_state #(
     parameter NUM_ROWS = 15
 )(
     input clk,

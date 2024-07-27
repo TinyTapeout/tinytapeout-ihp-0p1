@@ -4,7 +4,7 @@
 `timescale 1ns / 1ps
 `default_nettype none
 
-module p18_synchronizer #(
+module p09_synchronizer #(
     parameter int FF_COUNT = 3
 ) (
     input  logic clk,

@@ -4,7 +4,7 @@
 `timescale 1ns/1ps
 `default_nettype none
 
-module p18_timing #(
+module p09_timing #(
     parameter RESOLUTION,   // resolution of the active pixel
     parameter FRONT_PORCH,  // number of front porch pixel
     parameter SYNC_PULSE,   // number of sync pulse pixel

@@ -4,7 +4,7 @@
 `timescale 1ns/1ps
 `default_nettype none
 
-module p18_spi_receiver #(
+module p09_spi_receiver #(
     parameter COLOR1_DEFAULT,   // color1 default value
     parameter COLOR2_DEFAULT,   // color2 default value
     parameter COLOR3_DEFAULT,   // color3 default value
@@ -38,7 +38,7 @@ module p18_spi_receiver #(
 
     // Synchronizer to prevent metastability
 
-    p18_synchronizer  #(
+    p09_synchronizer  #(
         .FF_COUNT(2)
     ) synchronizer_spi_mosi (
         .clk        (clk),
@@ -48,7 +48,7 @@ module p18_spi_receiver #(
     );
 
     logic spi_cs_sync;
-    p18_synchronizer  #(
+    p09_synchronizer  #(
         .FF_COUNT(2)
     ) synchronizer_spi_cs (
         .clk        (clk),
@@ -58,7 +58,7 @@ module p18_spi_receiver #(
     );
 
     logic spi_sclk_sync;
-    p18_synchronizer  #(
+    p09_synchronizer  #(
         .FF_COUNT(2)
     ) synchronizer_spi_sclk (
         .clk        (clk),

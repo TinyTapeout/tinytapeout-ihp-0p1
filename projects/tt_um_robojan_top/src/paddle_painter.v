@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module p09_paddle_painter #(
+module p18_paddle_painter #(
     //                          BBGGRR
     parameter PADDLE_COLOR = 6'b111111,
     parameter PADDLE_SEGMENT_WIDTH = 8,

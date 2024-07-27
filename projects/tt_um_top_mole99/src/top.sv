@@ -13,7 +13,7 @@
     - next_vertical/next_frame at the start
 */
 
-module p18_top (
+module p09_top (
     input  logic clk,
     input  logic reset_n,
 
@@ -102,7 +102,7 @@ module p18_top (
     logic vblank;
 
     // Horizontal timing
-    p18_timing #(
+    p09_timing #(
         .RESOLUTION     (WIDTH),
         .FRONT_PORCH    (HFRONT),
         .SYNC_PULSE     (HSYNC),
@@ -121,7 +121,7 @@ module p18_top (
     );
 
     // Vertical timing
-    p18_timing #(
+    p09_timing #(
         .RESOLUTION     (HEIGHT),
         .FRONT_PORCH    (VFRONT),
         .SYNC_PULSE     (VSYNC),
@@ -170,7 +170,7 @@ module p18_top (
     logic [7:0] sprite_x;
     logic [7:0] sprite_y;
 
-    p18_sprite_movement #(
+    p09_sprite_movement #(
         .SPRITE_WIDTH  (SPRITE_WIDTH),
         .SPRITE_HEIGHT (SPRITE_HEIGHT),
         .WIDTH_SMALL   (WIDTH_SMALL),
@@ -216,7 +216,7 @@ module p18_top (
     logic sprite_data;
     logic sprite_shift;
 
-    p18_sprite_data #(
+    p09_sprite_data #(
         .WIDTH  (SPRITE_WIDTH),
         .HEIGHT (SPRITE_HEIGHT)
     ) sprite_data_inst (
@@ -239,7 +239,7 @@ module p18_top (
     assign start_big_line = counter_v[2:0] == 3'b000;
     assign end_big_pixel   = (inc_1_or_4 == 1'b0) ? counter_h[2:0] == 3'b111 : counter_h[2] == 1'b1;
 
-    p18_sprite_access #(
+    p09_sprite_access #(
         .WIDTH  (SPRITE_WIDTH)
     ) sprite_access_inst (
         .clk        (clk),
@@ -274,7 +274,7 @@ module p18_top (
         end
     end
 
-    p18_background #(
+    p09_background #(
         .HTOTAL (HTOTAL),
         .VTOTAL (VTOTAL)
     ) background_inst (
@@ -335,7 +335,7 @@ module p18_top (
     logic shift_x;
     logic shift_y;
 
-    p18_spi_receiver #(
+    p09_spi_receiver #(
         .COLOR1_DEFAULT (COLOR1_DEFAULT),
         .COLOR2_DEFAULT (COLOR2_DEFAULT),
         .COLOR3_DEFAULT (COLOR3_DEFAULT),

@@ -1,6 +1,6 @@
 
 
-module p09_sound_gen #(
+module p18_sound_gen #(
     parameter SOUND_DIVIDER = 5,
     parameter HIGH_LENGTH = 3,
     parameter LOW_LENGTH = 6

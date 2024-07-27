@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module p09_breakout
+module p18_breakout
 #(
     parameter PADDLE_SEGMENT_WIDTH = 8,
     parameter PADDLE_NUM_SEGMENTS = 6,
@@ -59,12 +59,12 @@ module p09_breakout
     wire sck;
     wire ss;
     wire mosi;
-    p09_synchronizer btn_left_sync(clk, nRst, btn_left_pin, btn_left);
-    p09_synchronizer btn_right_sync(clk, nRst, btn_right_pin, btn_right);
-    p09_synchronizer btn_select_sync(clk, nRst, btn_select_pin, btn_select);
-    p09_synchronizer sck_sync(clk, nRst, sck_pin, sck);
-    p09_synchronizer ss_sync(clk, nRst, ss_pin, ss);
-    p09_synchronizer mosi_sync(clk, nRst, mosi_pin, mosi);
+    p18_synchronizer btn_left_sync(clk, nRst, btn_left_pin, btn_left);
+    p18_synchronizer btn_right_sync(clk, nRst, btn_right_pin, btn_right);
+    p18_synchronizer btn_select_sync(clk, nRst, btn_select_pin, btn_select);
+    p18_synchronizer sck_sync(clk, nRst, sck_pin, sck);
+    p18_synchronizer ss_sync(clk, nRst, ss_pin, ss);
+    p18_synchronizer mosi_sync(clk, nRst, mosi_pin, mosi);
 
 
     // Generate the VGA timing
@@ -75,7 +75,7 @@ module p09_breakout
     wire vga_line_pulse;
     wire vga_frame_pulse;
     wire vga_active;
-    p09_vga_timing vga_timing(
+    p18_vga_timing vga_timing(
         .clk(clk),
         .nRst(nRst),
         .hsync(vga_hsync),
@@ -103,7 +103,7 @@ module p09_breakout
     wire draw_blocks;
     wire [5:0] lives_color;
     wire draw_lives;
-    p09_video_mux video_mux(
+    p18_video_mux video_mux(
         .out(video_out),
         .in_frame(vga_active),
         .background(6'b000000),
@@ -123,7 +123,7 @@ module p09_breakout
     assign vga_b = video_out[5:4];
 
     // Border generator
-    p09_border_painter #(
+    p18_border_painter #(
         .BORDER_WIDTH(BORDER_WIDTH)
     ) border (
         .in_border(draw_border),
@@ -139,7 +139,7 @@ module p09_breakout
     wire ball_left_en;
     wire ball_bottom_en;
     wire ball_right_en;
-    p09_ball_painter ball_painter(
+    p18_ball_painter ball_painter(
         .clk(clk),
         .nRst(nRst),
         .in_ball(draw_ball),
@@ -159,7 +159,7 @@ module p09_breakout
     // Paddle painter
     wire [9:0] paddle_x;
     wire [2:0] paddle_segment;
-    p09_paddle_painter #(
+    p18_paddle_painter #(
         .PADDLE_SEGMENT_WIDTH(PADDLE_SEGMENT_WIDTH),
         .PADDLE_NUM_SEGMENTS(PADDLE_NUM_SEGMENTS)
     ) paddle_painter(
@@ -184,7 +184,7 @@ module p09_breakout
     wire state_go_next_line;
     wire [12:0] write_block_line;
     wire write_line;
-    p09_blocks_painter #(
+    p18_blocks_painter #(
         .NUM_ROWS(NUM_ROWS)
     ) blocks_painter(
         .clk(clk),
@@ -205,7 +205,7 @@ module p09_breakout
 
     // Lives painter
     wire [1:0] lives;
-    p09_lives_painter lives_painter(
+    p18_lives_painter lives_painter(
         .clk(clk),
         .nRst(nRst),
         .in_lives(draw_lives),
@@ -221,7 +221,7 @@ module p09_breakout
     wire spi_line_write_en;
     wire spi_line_shift;
     wire reset_state;
-    p09_block_state  #(
+    p18_block_state  #(
         .NUM_ROWS(NUM_ROWS)
     ) block_state (
         .clk(clk),
@@ -234,7 +234,7 @@ module p09_breakout
     );
 
     // Sound generator
-    p09_sound_gen sound_gen(
+    p18_sound_gen sound_gen(
         .clk(clk),
         .nRst(nRst),
         .sound(sound_out),
@@ -249,7 +249,7 @@ module p09_breakout
     wire ball_out_of_bounds;
     wire latched_ball_block_collision;
     wire cmd_stop_game;
-    p09_game_logic #(
+    p18_game_logic #(
         .PADDLE_WIDTH(PADDLE_SEGMENT_WIDTH * PADDLE_NUM_SEGMENTS),
         .BORDER_WIDTH(BORDER_WIDTH),
         .INITIAL_BALL_X(INITIAL_BALL_X),
@@ -297,7 +297,7 @@ module p09_breakout
     wire spi_start_transaction;
     wire [15:0] spi_value;
     wire spi_write_en;
-    p09_spi_if #(
+    p18_spi_if #(
         .STATE_SIZE(SPI_STATE_SIZE)
     ) spi_if (
         .clk(clk),
@@ -313,7 +313,7 @@ module p09_breakout
         .start_transaction(spi_start_transaction)
     );
 
-    p09_spi_ctrl spi_ctrl(
+    p18_spi_ctrl spi_ctrl(
         .clk(clk),
         .nRst(nRst),
         .start(spi_start_transaction),

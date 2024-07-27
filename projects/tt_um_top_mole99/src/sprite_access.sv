@@ -4,7 +4,7 @@
 `timescale 1ns/1ps
 `default_nettype none
 
-module p18_sprite_access #(
+module p09_sprite_access #(
     parameter WIDTH             // width of the sprite
 )(
     input  logic clk,           // clock

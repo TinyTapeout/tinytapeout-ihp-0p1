@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module p09_vga_timing(
+module p18_vga_timing(
     input clk,
     input nRst,
     output reg hsync,

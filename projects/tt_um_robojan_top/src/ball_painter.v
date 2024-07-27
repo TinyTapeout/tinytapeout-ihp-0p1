@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module p09_ball_painter(
+module p18_ball_painter(
     input clk,
     input nRst,
     output in_ball,

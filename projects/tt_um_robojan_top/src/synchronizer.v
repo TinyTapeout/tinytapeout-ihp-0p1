@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module p09_synchronizer
+module p18_synchronizer
 #(
     parameter WIDTH = 1,
     parameter DEFAULT_VALUE = 1'b0

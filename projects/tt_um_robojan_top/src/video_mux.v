@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module p09_video_mux(
+module p18_video_mux(
     output reg [5:0] out,
     input in_frame,
     input [5:0] background,
