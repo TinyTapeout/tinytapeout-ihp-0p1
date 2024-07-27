@@ -16,7 +16,7 @@
 
 `define DINO_CONFIG
 
-module p21_dinogame (
+module p20_dinogame (
     input wire jump_in,
     input wire halt_in,
     input wire debug_in,
@@ -87,7 +87,7 @@ reg [19:0] no_jump_ctr;
 `endif
 
 
-p21_jumping jumping_inst (
+p20_jumping jumping_inst (
     .speed(24'd250000),
     .jump(jump_in),
     .jump_pos(jump_pos),
@@ -98,7 +98,7 @@ p21_jumping jumping_inst (
     .sys_rst(sys_rst)
 );
 
-p21_dinosprite dinosprite_inst (
+p20_dinosprite dinosprite_inst (
     .halt(game_halt),
     .sprite(dinosprite_num),
 
@@ -106,7 +106,7 @@ p21_dinosprite dinosprite_inst (
     .sys_rst(sys_rst)
 );
 
-p21_scroll scroll_inst (
+p20_scroll scroll_inst (
     .speed(speed),
     .pos(scrolladdr[10:0]),
     .halt(game_halt),
@@ -119,7 +119,7 @@ p21_scroll scroll_inst (
     .sys_rst(sys_rst)
 );
 
-p21_vga vga_inst (
+p20_vga vga_inst (
     .vaddr(vaddr),
     .haddr(haddr),
     .hsync(vga_hsync),
@@ -129,7 +129,7 @@ p21_vga vga_inst (
     .sys_rst(sys_rst)
 );
 
-p21_rng rng_inst (
+p20_rng rng_inst (
     .entropy_in(jump_in),
     .out(random),
 
@@ -137,7 +137,7 @@ p21_rng rng_inst (
     .sys_rst(sys_rst)
 );
 
-p21_score score_inst (
+p20_score score_inst (
     .halt(game_halt),
     .vaddr(vaddr),
     .haddr(haddr),
@@ -149,7 +149,7 @@ p21_score score_inst (
     .sys_rst(sys_rst)
 );
 
-p21_rendering rendering_inst (
+p20_rendering rendering_inst (
     .pixel(vga_pixel),
     .collision(collision),
     .cactus_select(cactus_select),

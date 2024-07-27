@@ -239,17 +239,6 @@ endif
 
 ifeq ($(ENABLE_PROJECT_20), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p20_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_no_time_for_squares_tommythorn/src/tt_um_no_time_for_squares_tommythorn.v \
-                            $(PROJECTS_HOME)/tt_um_no_time_for_squares_tommythorn/src/clock.v \
-                            $(PROJECTS_HOME)/tt_um_no_time_for_squares_tommythorn/src/vga.v \
-                            $(PROJECTS_HOME)/tt_um_no_time_for_squares_tommythorn/src/tile.v
-else
-    export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p20_wrapper_skip.v
-endif
-
-
-ifeq ($(ENABLE_PROJECT_21), 1)
-    export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p21_wrapper.v \
                             $(PROJECTS_HOME)/tt_um_dinogame/src/dinogame.v \
                             $(PROJECTS_HOME)/tt_um_dinogame/src/dinosprite.v \
                             $(PROJECTS_HOME)/tt_um_dinogame/src/jumping.v \
@@ -259,6 +248,17 @@ ifeq ($(ENABLE_PROJECT_21), 1)
                             $(PROJECTS_HOME)/tt_um_dinogame/src/scroll.v \
                             $(PROJECTS_HOME)/tt_um_dinogame/src/vga.v \
                             $(PROJECTS_HOME)/tt_um_dinogame/src/tt_um_dinogame.sv
+else
+    export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p20_wrapper_skip.v
+endif
+
+
+ifeq ($(ENABLE_PROJECT_21), 1)
+    export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p21_wrapper.v \
+                            $(PROJECTS_HOME)/tt_um_no_time_for_squares_tommythorn/src/tt_um_no_time_for_squares_tommythorn.v \
+                            $(PROJECTS_HOME)/tt_um_no_time_for_squares_tommythorn/src/clock.v \
+                            $(PROJECTS_HOME)/tt_um_no_time_for_squares_tommythorn/src/vga.v \
+                            $(PROJECTS_HOME)/tt_um_no_time_for_squares_tommythorn/src/tile.v
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p21_wrapper_skip.v
 endif

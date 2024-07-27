@@ -15,7 +15,7 @@
 `default_nettype none
 
 // Processes jump physics
-module p21_jumping (
+module p20_jumping (
 	input wire jump,
 	input wire halt,
 

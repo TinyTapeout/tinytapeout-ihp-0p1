@@ -15,7 +15,7 @@
 `default_nettype none
 
 // LFSR for generating cacti
-module p21_rng (
+module p20_rng (
     input wire entropy_in,
     output reg [4:0] out,
     input wire clk,

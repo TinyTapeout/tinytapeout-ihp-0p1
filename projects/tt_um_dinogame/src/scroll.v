@@ -15,7 +15,7 @@
 `default_nettype none
 
 // Calculate X-position for cactus and floor
-module p21_scroll (
+module p20_scroll (
     input wire halt,
     output reg [10:0] pos,
     output wire [23:0] speed,

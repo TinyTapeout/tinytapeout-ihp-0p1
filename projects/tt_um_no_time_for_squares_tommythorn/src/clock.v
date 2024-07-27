@@ -1,7 +1,7 @@
 `default_nettype none
 `timescale 1ns / 1ps
 
-module p20_clock(input wire        clock,
+module p21_clock(input wire        clock,
              input wire        reset,
              input wire        hour_button,
              input wire        minute_button,
@@ -18,7 +18,7 @@ module p20_clock(input wire        clock,
 
    wire [9:0]      x, y;
 
-   p20_vga vga_inst(.clock(clock),
+   p21_vga vga_inst(.clock(clock),
                 .reset(reset),
                 .vga_visible(vga_visible),
                 .vga_horizontal_blank_strobe(vga_horizontal_blank_strobe),
@@ -237,9 +237,9 @@ module p20_clock(input wire        clock,
      end
 
    // Three precomputed triangles; XXX get edgeeqn integrated
-   p20_tile hour_tile(clock, hour_a, hour_b, hour_c, command, hour_hit);
-   p20_tile min_tile(clock, min_a, min_b, min_c, command, min_hit);
-   p20_tile sec_tile(clock, sec_a, sec_b, sec_c, command, sec_hit);
+   p21_tile hour_tile(clock, hour_a, hour_b, hour_c, command, hour_hit);
+   p21_tile min_tile(clock, min_a, min_b, min_c, command, min_hit);
+   p21_tile sec_tile(clock, sec_a, sec_b, sec_c, command, sec_hit);
 
    always @(posedge clock) begin
       vga_rgb <= 6'b000000; // default black background
@@ -274,7 +274,7 @@ endmodule
 
 
 `ifdef SIMCLOCK
-module p20_tb;
+module p21_tb;
    reg clock = 1;
    reg reset = 1;
    wire [5:0] vga_rgb;
@@ -290,7 +290,7 @@ module p20_tb;
 
    always #5 clock = ~clock;
 
-   p20_clock clock_inst(clock,
+   p21_clock clock_inst(clock,
                     reset,
                     hour_button,
                     minute_button,

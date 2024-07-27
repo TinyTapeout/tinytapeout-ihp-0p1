@@ -15,7 +15,7 @@
 `default_nettype none
 
 // Calculate and render score
-module p21_score (
+module p20_score (
     input wire [9:0] vaddr,
     input wire [9:0] haddr,
     input wire halt,

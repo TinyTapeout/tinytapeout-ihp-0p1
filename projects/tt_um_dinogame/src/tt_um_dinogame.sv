@@ -13,7 +13,7 @@ module tt_um_dinogame (
 
     logic pix, hs, vs;
 
-    p21_dinogame game (
+    p20_dinogame game (
         .jump_in(ui_in[0]),
         .halt_in(ui_in[1]),
         .debug_in(ui_in[2]),

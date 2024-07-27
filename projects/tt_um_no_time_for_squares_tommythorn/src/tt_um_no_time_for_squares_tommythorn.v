@@ -33,7 +33,7 @@ module tt_um_no_time_for_squares_tommythorn
    assign uo_out[6] = vga_rgb[0];
    assign uo_out[7] = vga_hs;
 
-   p20_clock clock_inst(clk, !rst_n,
+   p21_clock clock_inst(clk, !rst_n,
                     hour_button, minute_button, debug_sel,
                     vga_hs, vga_vs, vga_rgb,
                     uio_out);

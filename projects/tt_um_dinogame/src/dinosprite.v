@@ -15,7 +15,7 @@
 `default_nettype none
 
 // Toggles the moving legs on the bottom of the sprite
-module p21_dinosprite (
+module p20_dinosprite (
     input wire halt,
 	output reg sprite,
 

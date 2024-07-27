@@ -15,7 +15,7 @@
 `default_nettype none
 
 // Calculate X-position for cactus and floor
-module p21_rendering (
+module p20_rendering (
     output wire pixel,
     output wire collision,
     output reg [2:0] cactus_select,

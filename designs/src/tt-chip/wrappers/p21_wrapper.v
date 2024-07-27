@@ -17,7 +17,7 @@ wire rst_n;
 assign { uio_in, ui_in, rst_n, clk} = iw;
 assign ow = { uio_oe, uio_out, uo_out };
 
-tt_um_dinogame tt_um_I (
+tt_um_no_time_for_squares_tommythorn tt_um_I (
   .uio_in  (uio_in),
   .uio_out (uio_out),
   .uio_oe  (uio_oe),

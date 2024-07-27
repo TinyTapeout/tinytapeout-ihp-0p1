@@ -11,7 +11,7 @@
 // Pixels are visible if vga_visible
 // vga_horizontal_blank_strobe marks the beginning of the horizontal blanking
 // vga_vertical_blank_strobe marks the beginning of the vertical blanking
-module p20_vga(input  wire      clock,
+module p21_vga(input  wire      clock,
            input wire       reset,
            output wire      vga_visible,
            output reg       vga_horizontal_blank_strobe, // one clock wide pulse pr line
@@ -89,7 +89,7 @@ endmodule
 
 
 `ifdef SIMVGA
-module p20_tb;
+module p21_tb;
    reg clock = 1;
    reg reset = 1;
    wire hour_button;
@@ -105,7 +105,7 @@ module p20_tb;
 
    always #5 clock = ~clock;
 
-   p20_vga vga_inst(.clock(clock),
+   p21_vga vga_inst(.clock(clock),
                 .reset(reset),
                 .vga_visible(vga_visible),
                 .vga_horizontal_blank_strobe(vga_horizontal_blank_strobe),

@@ -15,7 +15,7 @@
 `default_nettype none
 
 // Generate VGA timings and address/sync signals
-module p21_vga (
+module p20_vga (
     output reg [9:0] vaddr,
     output reg [9:0] haddr,
     output reg vsync,

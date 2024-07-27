@@ -21,7 +21,7 @@
 // A more delicate change would be to reduce the precision from 18b
 // down to ~ 10b, but that's likely to introduce a bunch of edge
 // cases.
-module p20_tile(input wire clock,
+module p21_tile(input wire clock,
 	    // Render equation parameters; changing them should be followed by a restart
 	    input wire [`W*3-1:0] a, // That's actually three signed 18-bit values
 	    input wire [`W*3-1:0] b,
@@ -52,14 +52,14 @@ endmodule
 `ifdef SIM
 // FINE!  I'll simulate this
 
-module p20_tb;
+module p21_tb;
    reg clock = 1;
    always #5 clock = 1 - clock;
 
    reg [1:0] command = 0;
    wire      hour_hit;
 
-   p20_tile hour_tile(clock, 54'h3ff7dfffb00097, 54'h3ff9d000880041, 54'h10bacff0ab114c, command, hour_hit);
+   p21_tile hour_tile(clock, 54'h3ff7dfffb00097, 54'h3ff9d000880041, 54'h10bacff0ab114c, command, hour_hit);
    initial begin
       $monitor(clock, command, hour_hit);
 
