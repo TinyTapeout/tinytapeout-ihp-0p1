@@ -6,7 +6,7 @@ then
     exit 1
 fi
 
-base=$(git rev-parse small)
+base=$(git rev-parse main)
 root=$(git rev-parse --show-toplevel)
 ts=$(date +%s)
 config=$root/designs/ihp-sg13g2/tt-chip/config.mk
@@ -50,5 +50,5 @@ sed -i '/export ENABLE_LARGE_USER_PROJECTS =/s/0/1/' $config
 sed -i '/export ENABLE_TT_LOGO =/s/0/1/' $config
 git commit -a -m 'feat: set config for large version with logo' 
 
-git switch small
+git switch main
 git restore $config
