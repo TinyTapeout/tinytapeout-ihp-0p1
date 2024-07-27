@@ -42,6 +42,7 @@ Configure paths and harden:
 ```bash
 export WORK_HOME=$(pwd)
 export IHP_PDK_ROOT=$(pwd)/IHP-Open-PDK
+export KLAYOUT_HOME=${IHP_PDK_ROOT}/ihp-sg13g2/libs.tech/klayout
 export DESIGN_HOME=$(pwd)/designs
 export DESIGN_CONFIG=${DESIGN_HOME}/ihp-sg13g2/tt-chip/config.mk
 
