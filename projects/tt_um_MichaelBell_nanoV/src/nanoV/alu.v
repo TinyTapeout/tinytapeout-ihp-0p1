@@ -10,7 +10,7 @@
       0100 XOR:  D = A ^ B
 */
 
-module p10_nanoV_alu (
+module p19_nanoV_alu (
     input [3:0] op,
     input a,
     input b,

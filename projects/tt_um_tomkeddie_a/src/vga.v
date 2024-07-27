@@ -1,5 +1,5 @@
 
-module p19_vga(
+module p10_vga(
 	       input  clk,
 	       input  rst,
            input  left_up,

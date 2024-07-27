@@ -3,7 +3,7 @@
    This core module takes instructions and produces output data
  */
 
-module p10_nanoV_core #(parameter NUM_REGS=16, parameter REG_ADDR_BITS=4) (
+module p19_nanoV_core #(parameter NUM_REGS=16, parameter REG_ADDR_BITS=4) (
     input clk,
     input rstn,
 
@@ -52,7 +52,7 @@ module p10_nanoV_core #(parameter NUM_REGS=16, parameter REG_ADDR_BITS=4) (
     wire wr_en = alu_write || ((is_jmp || is_mul) && cycle == 1) || is_load_upper || (is_mem && !is_store && (cycle == (is_fast_mem ? 0 : 2)));
     wire wr_next_en = slt_req;
     wire read_through = wr_next_en;
-    p10_nanoV_registers #(.REG_ADDR_BITS(REG_ADDR_BITS), .NUM_REGS(NUM_REGS))
+    p19_nanoV_registers #(.REG_ADDR_BITS(REG_ADDR_BITS), .NUM_REGS(NUM_REGS))
         i_registers(clk, rstn, wr_en, wr_next_en, read_through, counter, next_rs1, next_rs2, rs1, rs2, rd, data_rs1, data_rs2, data_rd, data_rd_next);
 
     reg cy;
@@ -73,7 +73,7 @@ module p10_nanoV_core #(parameter NUM_REGS=16, parameter REG_ADDR_BITS=4) (
     wire alu_out, cy_out, lts;
     wire slt = alu_op[0] == 1 ? ~cy_out : lts;
     wire slt_req = last_count && (alu_op[2:1] == 2'b01) && instr[4];
-    p10_nanoV_alu alu(alu_op, alu_a_in, alu_b_in, cy_in, alu_out, cy_out, lts);
+    p19_nanoV_alu alu(alu_op, alu_a_in, alu_b_in, cy_in, alu_out, cy_out, lts);
 
     reg is_equal_reg;
     wire is_equal = is_equal_reg && (data_rs1 == data_rs2);
@@ -94,10 +94,10 @@ module p10_nanoV_core #(parameter NUM_REGS=16, parameter REG_ADDR_BITS=4) (
 
     wire [4:0] shift_amt = alu_select_rs2 ? shift_amt_reg : alu_op[2] ? i_imm[4:0] : ~i_imm[4:0];
     wire shifter_out, shift_stored, shift_in;
-    p10_nanoV_shift shifter({instr[30],alu_op[2:0]}, counter, stored_data, shift_amt, shifter_out, shift_stored, shift_in);
+    p19_nanoV_shift shifter({instr[30],alu_op[2:0]}, counter, stored_data, shift_amt, shifter_out, shift_stored, shift_in);
 
     wire mul_out;
-    p10_nanoV_mul #(.A_BITS(16)) multiplier(clk, stored_data[15:0], data_rs1 && is_mul && cycle[0], mul_out);
+    p19_nanoV_mul #(.A_BITS(16)) multiplier(clk, stored_data[15:0], data_rs1 && is_mul && cycle[0], mul_out);
 
     assign data_rd = (is_mem && !is_store)  ? (use_ext_data_in ? ext_data_in : stored_data[6]) :
                      (is_mul) ? mul_out :

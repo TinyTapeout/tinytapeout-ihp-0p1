@@ -3,7 +3,7 @@
    This core module takes instructions and produces output data
  */
 
-module p10_nanoV_cpu #(parameter NUM_REGS=16) (
+module p19_nanoV_cpu #(parameter NUM_REGS=16) (
     input clk,
     input rstn,
 
@@ -94,7 +94,7 @@ module p10_nanoV_cpu #(parameter NUM_REGS=16) (
     always @(posedge clk)
         last_data_in <= instr[14] ? 1'b0 : data_in;
 
-    p10_nanoV_core #(.REG_ADDR_BITS($clog2(NUM_REGS)), .NUM_REGS(NUM_REGS)) core (
+    p19_nanoV_core #(.REG_ADDR_BITS($clog2(NUM_REGS)), .NUM_REGS(NUM_REGS)) core (
         clk,
         rstn,
         (next_cycle == instr_cycles_assume_branch_not_taken) ? next_instr[30:2] : instr[30:2],

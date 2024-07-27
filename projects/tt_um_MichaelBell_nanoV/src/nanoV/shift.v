@@ -6,7 +6,7 @@
       1101 SRA:  D = A >> B (signed)
 */
 
-module p10_nanoV_shift (
+module p19_nanoV_shift (
     input [3:0] op,
     input [4:0] counter,
     input [31:0] a,

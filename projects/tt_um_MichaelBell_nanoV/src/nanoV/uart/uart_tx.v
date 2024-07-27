@@ -9,7 +9,7 @@
 // - UART transmitter module.
 //
 
-module p10_uart_tx(
+module p19_uart_tx(
 input  wire         clk         , // Top level system clock input.
 input  wire         resetn      , // Asynchronous active low reset.
 output wire         uart_txd    , // UART transmit pin.

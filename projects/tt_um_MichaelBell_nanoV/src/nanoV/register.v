@@ -12,7 +12,7 @@
     On unpause, the write bit address is not incremented on the first clock.
  */
 
-module p10_nanoV_registers #(parameter NUM_REGS=16, parameter REG_ADDR_BITS=4) (
+module p19_nanoV_registers #(parameter NUM_REGS=16, parameter REG_ADDR_BITS=4) (
     input clk,
     input rstn,
 

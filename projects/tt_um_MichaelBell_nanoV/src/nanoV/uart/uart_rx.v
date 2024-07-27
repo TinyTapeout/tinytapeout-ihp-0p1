@@ -9,7 +9,7 @@
 // - UART reciever module.
 //
 
-module p10_uart_rx(
+module p19_uart_rx(
 input  wire       clk          , // Top level system clock input.
 input  wire       resetn       , // Asynchronous active low reset.
 input  wire       uart_rxd     , // UART Recieve pin.

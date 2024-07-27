@@ -14,7 +14,7 @@
  * which causes the result to be shifted right.
  */
 
-module p10_nanoV_mul #(parameter A_BITS=32) (
+module p19_nanoV_mul #(parameter A_BITS=32) (
     input clk,
 
     input [A_BITS-1:0] a,

@@ -60,7 +60,7 @@ module tt_um_MichaelBell_nanoV (
     reg [7:0] output_data;
     assign uo_out = output_data;
 
-    p10_nanoV_cpu #(.NUM_REGS(16)) nano(
+    p19_nanoV_cpu #(.NUM_REGS(16)) nano(
         .clk(clk),
         .rstn(rst_n),
         .spi_data_in(buffered_spi_in),
@@ -109,7 +109,7 @@ module tt_um_MichaelBell_nanoV (
     wire uart_tx_start = is_data && connect_peripheral == PERI_UART;
     wire [7:0] uart_tx_data = data_out[7:0];
 
-    p10_uart_tx #(.CLK_HZ(12_000_000), .BIT_RATE(93_750)) i_uart_tx(
+    p19_uart_tx #(.CLK_HZ(12_000_000), .BIT_RATE(93_750)) i_uart_tx(
         .clk(clk),
         .resetn(rst_n),
         .uart_txd(uart_txd),
@@ -118,7 +118,7 @@ module tt_um_MichaelBell_nanoV (
         .uart_tx_busy(uart_tx_busy)
     );
 
-    p10_uart_rx #(.CLK_HZ(12_000_000), .BIT_RATE(93_750)) i_uart_rx(
+    p19_uart_rx #(.CLK_HZ(12_000_000), .BIT_RATE(93_750)) i_uart_rx(
         .clk(clk),
         .resetn(rst_n),
         .uart_rxd(uart_rxd),

@@ -111,15 +111,8 @@ endif
 
 ifeq ($(ENABLE_PROJECT_10), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p10_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/tt_top.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/alu.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/core.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/cpu.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/register.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/shift.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/multiply.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/uart/uart_tx.v \
-                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/uart/uart_rx.v
+                            $(PROJECTS_HOME)/tt_um_tomkeddie_a/src/top_tto.v \
+                            $(PROJECTS_HOME)/tt_um_tomkeddie_a/src/vga.v
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p10_wrapper_skip.v
 endif
@@ -230,8 +223,15 @@ endif
 
 ifeq ($(ENABLE_PROJECT_19), 1)
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p19_wrapper.v \
-                            $(PROJECTS_HOME)/tt_um_tomkeddie_a/src/top_tto.v \
-                            $(PROJECTS_HOME)/tt_um_tomkeddie_a/src/vga.v
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/tt_top.v \
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/alu.v \
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/core.v \
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/cpu.v \
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/register.v \
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/shift.v \
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/multiply.v \
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/uart/uart_tx.v \
+                            $(PROJECTS_HOME)/tt_um_MichaelBell_nanoV/src/nanoV/uart/uart_rx.v
 else
     export VERILOG_FILES += $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/wrappers/p19_wrapper_skip.v
 endif

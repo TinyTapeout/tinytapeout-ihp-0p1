@@ -92,7 +92,7 @@ module tt_um_tomkeddie_a
   assign rst       = !rst_n;
 
   // instantiate the DUT
-  p19_vga vga(.clk(clk),
+  p10_vga vga(.clk(clk),
           .rst(rst),
           .left_up(left_up),
           .left_down(left_down),
