@@ -19,35 +19,44 @@ git tag large-$ts large
 git tag large-logo-$ts large-logo
 
 git switch $base -C small
-git commit --allow-empty -m 'feat: set config for small version without logo'
+sed -i '/export ENABLE_USER_PROJECTS/s/\?=.*/= 0/' $config
+sed -i '/export ENABLE_LARGE_USER_PROJECTS/s/\?=.*/= 0/' $config
+sed -i '/export ENABLE_TT_LOGO/s/\?=.*/= 0/' $config
+git commit -a -m 'feat: set config for small version without logo'
 
 git switch $base -C small-logo
 git restore $config
-sed -i '/export ENABLE_TT_LOGO =/s/0/1/' $config
+sed -i '/export ENABLE_USER_PROJECTS/s/\?=.*/= 0/' $config
+sed -i '/export ENABLE_LARGE_USER_PROJECTS/s/\?=.*/= 0/' $config
+sed -i '/export ENABLE_TT_LOGO/s/\?=.*/= 1/' $config
 git commit -a -m 'feat: set config for small version with logo' 
 
 git switch $base -C medium
 git restore $config
-sed -i '/export ENABLE_USER_PROJECTS =/s/0/1/' $config
+sed -i '/export ENABLE_USER_PROJECTS/s/\?=.*/= 1/' $config
+sed -i '/export ENABLE_LARGE_USER_PROJECTS/s/\?=.*/= 0/' $config
+sed -i '/export ENABLE_TT_LOGO/s/\?=.*/= 0/' $config
 git commit -a -m 'feat: set config for medium version without logo'
 
 git switch $base -C medium-logo
 git restore $config
-sed -i '/export ENABLE_USER_PROJECTS =/s/0/1/' $config
-sed -i '/export ENABLE_TT_LOGO =/s/0/1/' $config
+sed -i '/export ENABLE_USER_PROJECTS/s/\?=.*/= 1/' $config
+sed -i '/export ENABLE_LARGE_USER_PROJECTS/s/\?=.*/= 0/' $config
+sed -i '/export ENABLE_TT_LOGO/s/\?=.*/= 1/' $config
 git commit -a -m 'feat: set config for medium version with logo'
 
 git switch $base -C large
 git restore $config
-sed -i '/export ENABLE_USER_PROJECTS =/s/0/1/' $config
-sed -i '/export ENABLE_LARGE_USER_PROJECTS =/s/0/1/' $config
+sed -i '/export ENABLE_USER_PROJECTS/s/\?=.*/= 1/' $config
+sed -i '/export ENABLE_LARGE_USER_PROJECTS/s/\?=.*/= 1/' $config
+sed -i '/export ENABLE_TT_LOGO/s/\?=.*/= 0/' $config
 git commit -a -m 'feat: set config for large version without logo'
 
 git switch $base -C large-logo
 git restore $config
-sed -i '/export ENABLE_USER_PROJECTS =/s/0/1/' $config
-sed -i '/export ENABLE_LARGE_USER_PROJECTS =/s/0/1/' $config
-sed -i '/export ENABLE_TT_LOGO =/s/0/1/' $config
+sed -i '/export ENABLE_USER_PROJECTS/s/\?=.*/= 1/' $config
+sed -i '/export ENABLE_LARGE_USER_PROJECTS/s/\?=.*/= 1/' $config
+sed -i '/export ENABLE_TT_LOGO/s/\?=.*/= 1/' $config
 git commit -a -m 'feat: set config for large version with logo' 
 
 git switch main
