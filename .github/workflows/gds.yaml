@@ -60,9 +60,13 @@ jobs:
           make
           make $WORK_HOME/objects/ihp-sg13g2/tt-chip/base/6_final_concat.cdl
 
+      - name: Generate seal ring
+        run: |
+          pip install klayout==0.29.1
+          scripts/add-seal-ring.py
+
       - name: Generate fill
         run: |
-          pip install klayout
           scripts/add-fill.py
 
       - name: Upload flow results
@@ -131,7 +135,7 @@ jobs:
 
       - name: Run DRC
         run: |
-          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_minimal.lydrc -rd cell=tt_top -rd report_file=sg13g2_minimal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final_fill.gds
+          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_minimal.lydrc -rd cell=tt_top -rd report_file=sg13g2_minimal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final_seal_fill.gds
 
       - name: Upload DRC results
         uses: actions/upload-artifact@v4
@@ -171,7 +175,7 @@ jobs:
 #
 #      - name: Run DRC
 #        run: |
-#          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc -rd cell=tt_top -rd report_file=sg13g2_maximal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final_fill.gds
+#          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc -rd cell=tt_top -rd report_file=sg13g2_maximal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final_seal_fill.gds
 #
 #      - name: Upload DRC results
 #        uses: actions/upload-artifact@v4

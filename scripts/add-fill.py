@@ -5,8 +5,8 @@
 import pya
 
 results_dir = "results/ihp-sg13g2/tt-chip/base"
-input_gds = f"{results_dir}/6_final.gds"
-output_gds = f"{results_dir}/6_final_fill.gds"
+input_gds = f"{results_dir}/6_final_seal.gds"
+output_gds = f"{results_dir}/6_final_seal_fill.gds"
 
 die_size = (2200, 2200)
 die_margin = 36

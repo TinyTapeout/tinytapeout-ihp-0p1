@@ -32,8 +32,6 @@ export ENABLE_PROJECT_21 = $(ENABLE_LARGE_USER_PROJECTS)
 export ENABLE_PROJECT_22 = $(ENABLE_LARGE_USER_PROJECTS)
 export ENABLE_PROJECT_23 = $(ENABLE_LARGE_USER_PROJECTS)
 
-export SEAL_GDS = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/macros/sealring/gds/sealring.gds
-
 export VERILOG_FILES = $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/tt_top.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/counter.v \
                        $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/basic_mux.v \
