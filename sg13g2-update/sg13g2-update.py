@@ -37,7 +37,7 @@ def download_github_file(repo_owner, repo_name, branch, file_path, local_dir):
 
 owner= 'IHP-GmbH'
 repo_name= 'IHP-Open-PDK'
-branch = 'dev'
+branch = 'b392c428e4ee90a8591e881bafa4559c66f72d11'
 
 # Klayout
 download_github_file(owner, repo_name, branch, 'ihp-sg13g2/libs.tech/klayout/tech/sg13g2.lyp', '.')

@@ -12,6 +12,7 @@ jobs:
       DESIGN_CONFIG: ${{ github.workspace }}/designs/ihp-sg13g2/tt-chip/config.mk
       DESIGN_HOME: ${{ github.workspace }}/designs
       WORK_HOME: ${{ github.workspace }}
+      ORFS_COMMIT: a0615e8f0e00649cf642861e4e1e1951fa33df02
 
     steps:
       - name: checkout repo
@@ -40,6 +41,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: The-OpenROAD-Project/OpenROAD-flow-scripts
+          ref: ${{ env.ORFS_COMMIT }}
           submodules: recursive
           path: 'orfs'
 

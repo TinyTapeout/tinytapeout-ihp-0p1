@@ -12,8 +12,10 @@ Install OpenROAD Flow Scripts (ORFS):
 
 ```bash
 export ORFS_ROOT=~/OpenROAD-flow-scripts
+export ORFS_COMMIT=a0615e8f0e00649cf642861e4e1e1951fa33df02
 
 git clone --recursive https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts $ORFS_ROOT
+git -C $ORFS_ROOT switch -d $ORFS_COMMIT --recurse-submodules
 ```
 
 Update the IHP platform files used by ORFS to more recent version from the IHP dev branch:
