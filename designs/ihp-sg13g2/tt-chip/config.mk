@@ -3,9 +3,9 @@ export DESIGN_NAME = tt_top
 export PLATFORM    = ihp-sg13g2
 export PROJECTS_HOME = $(DESIGN_HOME)/../projects
 
-export ENABLE_USER_PROJECTS = 0
-export ENABLE_LARGE_USER_PROJECTS = 0
-export ENABLE_TT_LOGO = 0
+export ENABLE_USER_PROJECTS ?= 1
+export ENABLE_LARGE_USER_PROJECTS ?= 1
+export ENABLE_TT_LOGO ?= 1
 
 export ENABLE_PROJECT_00 = 1
 export ENABLE_PROJECT_01 = 1
