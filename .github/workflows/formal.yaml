@@ -16,6 +16,7 @@ jobs:
     - name: install oss-cad-suite
       uses: YosysHQ/setup-oss-cad-suite@v3
       with:
+          version: '2024-07-16'
           github-token: ${{ secrets.GITHUB_TOKEN }}
     - run: | 
         yosys --version
