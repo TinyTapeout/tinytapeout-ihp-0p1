@@ -52,7 +52,7 @@ for layer_name, (layer, datatype) in fill_exclude:
     fill_region_init -= exclude_region
 
 for group_desc, group_name, grid, spacing, layers in fill_groups:
-    print(f"Generating fill for {group_desc}...")
+    print(f"Generating fill for {group_desc}...", flush=True)
     cell_index = layout.add_cell(f"FILL_{group_name}")
     cell_obj = layout.cell(cell_index)
     fill_region = fill_region_init.dup()
