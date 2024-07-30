@@ -48,10 +48,7 @@ jobs:
 
       - name: Apply platform update
         run: |
-          export UPDATE_DIR=$(realpath sg13g2-update)
-          cd orfs/flow/platforms/ihp-sg13g2
-          python $UPDATE_DIR/sg13g2-update.py
-          cp $UPDATE_DIR/config.mk .
+          sg13g2-update/update.sh
 
       - name: Run the flow
         working-directory: 'orfs/flow'
