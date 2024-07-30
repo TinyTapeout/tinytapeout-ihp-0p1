@@ -131,7 +131,7 @@ jobs:
           name: vcd
           path: test/test_mux.vcd
 
-  drc-minimal:
+  fill-seal:
     needs: gds
     runs-on: ubuntu-22.04
     env:
@@ -156,6 +156,71 @@ jobs:
       - name: Generate fill
         run: |
           scripts/add-fill.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final_seal.gds
+
+      - name: Upload fill results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fill-seal
+          path: |
+            results/ihp-sg13g2/tt-chip/base/6_final_seal_fill.gds
+
+  fill-no-seal:
+    needs: gds
+    runs-on: ubuntu-22.04
+    env:
+      WORK_HOME: ${{ github.workspace }}
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Download GDS
+        uses: actions/download-artifact@v4
+        with:
+          name: gds
+
+      - name: Install KLayout
+        run: |
+          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
+          sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
+          pip install klayout==0.29.4
+
+      - name: Generate fill
+        run: |
+          scripts/add-fill.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final.gds
+
+      - name: Upload fill results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fill-no-seal
+          path: |
+            results/ihp-sg13g2/tt-chip/base/6_final_fill.gds
+
+  drc-minimal:
+    needs: fill-seal
+    runs-on: ubuntu-22.04
+    env:
+      WORK_HOME: ${{ github.workspace }}
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Download GDS
+        uses: actions/download-artifact@v4
+        with:
+          name: fill-seal
+          path: results/ihp-sg13g2/tt-chip/base
+
+      - name: Install KLayout
+        run: |
+          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
+          sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
+          pip install klayout==0.29.4
 
       - name: Run DRC
         run: |
