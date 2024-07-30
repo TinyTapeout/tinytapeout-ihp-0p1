@@ -30,6 +30,7 @@ jobs:
         run: |
           wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
           sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
+          pip install klayout==0.29.4
 
       - name: 'Install yosys (oss-cad-suite)'
         run: |
@@ -62,12 +63,7 @@ jobs:
 
       - name: Generate seal ring
         run: |
-          pip install klayout==0.29.1
           scripts/add-seal-ring.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final.gds
-
-      - name: Generate fill
-        run: |
-          scripts/add-fill.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final_seal.gds
 
       - name: Upload flow results
         uses: actions/upload-artifact@v4
@@ -117,6 +113,8 @@ jobs:
   drc-minimal:
     needs: gds
     runs-on: ubuntu-22.04
+    env:
+      WORK_HOME: ${{ github.workspace }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
@@ -132,6 +130,11 @@ jobs:
         run: |
           wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
           sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
+          pip install klayout==0.29.4
+
+      - name: Generate fill
+        run: |
+          scripts/add-fill.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final_seal.gds
 
       - name: Run DRC
         run: |
@@ -157,6 +160,8 @@ jobs:
   drc-maximal:
     needs: gds
     runs-on: ubuntu-22.04
+    env:
+      WORK_HOME: ${{ github.workspace }}
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
