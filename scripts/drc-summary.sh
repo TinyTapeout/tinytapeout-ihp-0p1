@@ -12,6 +12,11 @@ if [ ! -f "$DRC_FILE" ]; then
     exit 1
 fi
 
+if [[ "$DRC_FILE" =~ "maximal" ]]; then
+    echo "Warning: running DRC without seal ring and fill, some issues are expected"
+    echo ""
+fi
+
 DRC_COUNT=$(xmllint --xpath 'count(//item)' $DRC_FILE)
 
 if [ "$DRC_COUNT" -eq 0 ]; then
