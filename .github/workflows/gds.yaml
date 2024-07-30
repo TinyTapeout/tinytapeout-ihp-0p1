@@ -63,11 +63,11 @@ jobs:
       - name: Generate seal ring
         run: |
           pip install klayout==0.29.1
-          scripts/add-seal-ring.py
+          scripts/add-seal-ring.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final.gds
 
       - name: Generate fill
         run: |
-          scripts/add-fill.py
+          scripts/add-fill.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final_seal.gds
 
       - name: Upload flow results
         uses: actions/upload-artifact@v4

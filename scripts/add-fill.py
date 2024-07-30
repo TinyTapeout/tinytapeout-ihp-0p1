@@ -3,10 +3,11 @@
 # fill generator inspired by https://github.com/IHP-GmbH/IHP-Open-DesignLib/tree/main/U_Hawaii_EE628_Spring_2024
 
 import pya
+import sys
 
 results_dir = "results/ihp-sg13g2/tt-chip/base"
-input_gds = f"{results_dir}/6_final_seal.gds"
-output_gds = f"{results_dir}/6_final_seal_fill.gds"
+input_gds = sys.argv[1] if len(sys.argv) >=2 else f"{results_dir}/6_final_seal.gds"
+output_gds = input_gds.replace('.gds', '_fill.gds')
 
 die_size = (2200, 2200)
 die_margin = 36

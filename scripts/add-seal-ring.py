@@ -5,8 +5,8 @@ import sys
 
 tech_dir = 'IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout'
 results_dir = "results/ihp-sg13g2/tt-chip/base"
-input_gds = f"{results_dir}/6_final.gds"
-output_gds = f"{results_dir}/6_final_seal.gds"
+input_gds = sys.argv[1] if len(sys.argv) >=2 else f"{results_dir}/6_final.gds"
+output_gds = input_gds.replace('.gds', '_seal.gds')
 
 sys.path.append(f'{tech_dir}/python')
 import sg13g2_pycell_lib
