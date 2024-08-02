@@ -131,7 +131,7 @@ jobs:
           name: vcd
           path: test/test_mux.vcd
 
-  fill-seal:
+  drc-minimal:
     needs: gds
     runs-on: ubuntu-22.04
     env:
@@ -157,71 +157,6 @@ jobs:
         run: |
           scripts/add-fill.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final_seal.gds
 
-      - name: Upload fill results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: fill-seal
-          path: |
-            results/ihp-sg13g2/tt-chip/base/6_final_seal_fill.gds
-
-  fill-no-seal:
-    needs: gds
-    runs-on: ubuntu-22.04
-    env:
-      WORK_HOME: ${{ github.workspace }}
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Download GDS
-        uses: actions/download-artifact@v4
-        with:
-          name: gds
-
-      - name: Install KLayout
-        run: |
-          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
-          sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
-          pip install klayout==0.29.4
-
-      - name: Generate fill
-        run: |
-          scripts/add-fill.py $WORK_HOME/results/ihp-sg13g2/tt-chip/base/6_final.gds
-
-      - name: Upload fill results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: fill-no-seal
-          path: |
-            results/ihp-sg13g2/tt-chip/base/6_final_fill.gds
-
-  drc-minimal:
-    needs: fill-seal
-    runs-on: ubuntu-22.04
-    env:
-      WORK_HOME: ${{ github.workspace }}
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Download GDS
-        uses: actions/download-artifact@v4
-        with:
-          name: fill-seal
-          path: results/ihp-sg13g2/tt-chip/base
-
-      - name: Install KLayout
-        run: |
-          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
-          sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
-          pip install klayout==0.29.4
-
       - name: Run DRC
         run: |
           klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_minimal.lydrc -rd cell=tt_top -rd report_file=sg13g2_minimal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final_seal_fill.gds
@@ -243,7 +178,7 @@ jobs:
         run: |
           scripts/drc-summary.sh sg13g2_minimal.lyrdb >> $GITHUB_STEP_SUMMARY
 
-  drc-minimal-raw:
+  drc-maximal:
     needs: gds
     runs-on: ubuntu-22.04
     env:
@@ -266,14 +201,14 @@ jobs:
 
       - name: Run DRC
         run: |
-          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_minimal.lydrc -rd cell=tt_top -rd report_file=sg13g2_minimal_raw.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final.gds
+          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc -rd cell=tt_top -rd report_file=sg13g2_maximal.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final.gds
 
       - name: Upload DRC results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: drc-minimal-raw-results
-          path: sg13g2_minimal_raw.lyrdb
+          name: drc-maximal-results
+          path: sg13g2_maximal.lyrdb
 
       - name: install xmllint
         run: |
@@ -283,49 +218,7 @@ jobs:
       - name: DRC summary
         if: always()
         run: |
-          scripts/drc-summary.sh sg13g2_minimal_raw.lyrdb >> $GITHUB_STEP_SUMMARY
-
-  drc-maximal-raw:
-    needs: gds
-    runs-on: ubuntu-22.04
-    env:
-      WORK_HOME: ${{ github.workspace }}
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Download GDS
-        uses: actions/download-artifact@v4
-        with:
-          name: gds
-
-      - name: Install KLayout
-        run: |
-          wget https://www.klayout.org/downloads/Ubuntu-22/klayout_0.29.4-1_amd64.deb
-          sudo apt-get install -y ./klayout_0.29.4-1_amd64.deb
-
-      - name: Run DRC
-        run: |
-          klayout -b -r ./IHP-Open-PDK/ihp-sg13g2/libs.tech/klayout/tech/drc/sg13g2_maximal.lydrc -rd cell=tt_top -rd report_file=sg13g2_maximal_raw.lyrdb ./results/ihp-sg13g2/tt-chip/base/6_final.gds
-
-      - name: Upload DRC results
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: drc-maximal-raw-results
-          path: sg13g2_maximal_raw.lyrdb
-
-      - name: install xmllint
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libxml2-utils
-
-      - name: DRC summary
-        if: always()
-        run: |
-          scripts/drc-summary.sh sg13g2_maximal_raw.lyrdb >> $GITHUB_STEP_SUMMARY
+          scripts/drc-summary.sh sg13g2_maximal.lyrdb >> $GITHUB_STEP_SUMMARY
 
 #  lvs:
 #    needs: gds

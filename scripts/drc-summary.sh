@@ -12,7 +12,7 @@ if [ ! -f "$DRC_FILE" ]; then
     exit 1
 fi
 
-if [[ "$DRC_FILE" =~ "raw" ]]; then
+if [[ "$DRC_FILE" =~ "maximal" ]]; then
     echo "Warning: running DRC without seal ring and fill, some issues are expected"
     echo ""
 fi
